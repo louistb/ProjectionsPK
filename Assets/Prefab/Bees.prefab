@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4357961791295506}
   - component: {fileID: 33964389822277076}
   - component: {fileID: 23632989585320238}
+  - component: {fileID: 95410572209571232}
   m_Layer: 0
   m_Name: wings
   m_TagString: Untagged
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674223202446700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4975159, y: -0.3790521, z: -0.021785062}
+  m_LocalPosition: {x: -1.1685647, y: -0.09033382, z: -0.0102379685}
   m_LocalScale: {x: 3.3010354, y: 3.3010325, z: 3.3010325}
   m_Children:
   - {fileID: 4357961791295506}
@@ -84,11 +85,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e2c56a1ab9f604c58933696d4358cd9b, type: 2}
+  - {fileID: 2100000, guid: 7a92c04bf731f4f45b6d53ded8ee78fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,12 +101,14 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23632989585320238
 MeshRenderer:
@@ -115,11 +119,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e2c56a1ab9f604c58933696d4358cd9b, type: 2}
+  - {fileID: 2100000, guid: 7a92c04bf731f4f45b6d53ded8ee78fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,12 +135,14 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33248727908239544
 MeshFilter:
@@ -166,6 +173,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &95410572209571232
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374137429486498}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2274d7fd8fcf7c439e38e3370684549, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114740501809522782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,6 +207,7 @@ MonoBehaviour:
   _RangeDirectionY: 0
   _RangeDirectionX: 0
   _RangeDirectionZ: 0
+  _MaxFlyRate: 0
   Controller: {fileID: 0}
   LifeTimer: 0
   t: 0

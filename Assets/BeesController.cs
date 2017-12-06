@@ -6,7 +6,7 @@ public class BeesController : MonoBehaviour {
 
 	public GameObject bees;
 	public int NbOfBees;
-	public float MaxRefreshRate,TimeBeforeDeath,speed;
+	public float MaxRefreshRate,TimeBeforeDeath,speed, MaxFlyRate;
 	public float RangeDirectionY,RangeDirectionX,RangeDirectionZ;
 
 
