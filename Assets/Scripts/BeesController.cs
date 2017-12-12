@@ -52,7 +52,20 @@ public class BeesController : MonoBehaviour {
 			print (intheScene.Length);
 		}
 
-		if (Input.GetKeyDown (KeyCode.D)) {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            intheScene = GameObject.FindGameObjectsWithTag("bee");
+            foreach(var bee in intheScene)
+            {
+                if(bee.GetComponent<FlyingBees>() == null)
+                {
+                    print(bee);
+                    bee.GetComponent<WalkingBees>().Flying = true;
+                }
+            }
+        }
+
+        if (Input.GetKeyDown (KeyCode.D)) {
 			intheScene = GameObject.FindGameObjectsWithTag ("bee");
 			foreach (var bees in intheScene) {
 				Destroy (bees);
@@ -74,6 +87,7 @@ public class BeesController : MonoBehaviour {
                 var selectedWall = Walls[Random.Range(0, Walls.Length)];
                 GameObject NewBee = Instantiate(WalkingBees, Spawn.transform.position, newRotation, transform) as GameObject;
                 NewBee.GetComponent<WalkingBees>().SelectedWall = selectedWall;
+                NewBee.GetComponent<WalkingBees>().DeathPoint = Spawn.transform.position;
                 NewBee.tag = "bee";
             }
 		}

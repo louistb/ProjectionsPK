@@ -1,85 +1,121 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WalkingBees : MonoBehaviour {
+public class WalkingBees : FlyingBees {
 
-	public float _MaxRefreshRate,_TimeBeforeDeath,_speed;
-	public float _RangeDirectionY,_RangeDirectionX,_RangeDirectionZ,_MaxFlyRate;
-	public BeesController Controller;
+    public float _MaxRefreshRate, _TimeBeforeDeath, _speed;
+    public float _RangeDirectionY, _RangeDirectionX, _RangeDirectionZ, _MaxFlyRate;
+    public BeesController Controller;
 
-	public float LifeTimer,t,UpdateTime,centerPoint;
-	public Vector3 CurrentPos, DestinationPos,AtractPos;
-	public bool InAttraction;
+    public float LifeTimer, t, UpdateTime, centerPoint;
+    public Vector3 CurrentPos, DestinationPos, AtractPos, DeathPoint;
+    public bool InAttraction, Flying,Dying;
 
-    private Quaternion _facing;
+    private Quaternion CurrentRotation, DestinatopmRotation;
 
     public GameObject SelectedWall;
 
-	void Awake() {
-		Controller = GameObject.Find ("Bees_System").GetComponent<BeesController>();
+    void Awake() {
+        Controller = GameObject.Find("Bees_System").GetComponent<BeesController>();
 
-		_MaxRefreshRate = Controller.MaxRefreshRate;
-		_TimeBeforeDeath = Controller.TimeBeforeDeathWalk - Controller.TimeBeforeDeath / Random.Range(0,Controller.TimeBeforeDeath/3);
-		_speed = Controller.speedWalk;
-		_RangeDirectionX = Controller.RangeDirectionX;
-		_RangeDirectionY = Controller.RangeDirectionY;
-		_RangeDirectionZ = Controller.RangeDirectionZ;
-	}
+        _MaxRefreshRate = Controller.MaxRefreshRate;
+        _TimeBeforeDeath = Controller.TimeBeforeDeathWalk - Controller.TimeBeforeDeath / Random.Range(0, Controller.TimeBeforeDeath / 3);
+        _speed = Controller.speedWalk;
+        _RangeDirectionX = Controller.RangeDirectionX;
+        _RangeDirectionY = Controller.RangeDirectionY;
+        _RangeDirectionZ = Controller.RangeDirectionZ;
 
-	void Start () 
-	{
-		UpdateTime = NewRandUpdate();
-        var RendererWall = SelectedWall.GetComponent<Renderer>();
-        centerPoint = Random.Range(-2f, 2f);
-        DirectionUpdate();
-        _facing = transform.rotation;
+        Flying = false;
+        Dying = false;
     }
-		
 
-	void OnCollisionEnter(Collision collision)
-	{
-		print (collision);
-		DirectionUpdate ();
-	}
+    void Start()
+    {
+        UpdateTime = NewRandUpdate();
+        var RendererWall = SelectedWall.GetComponent<Renderer>();
+        centerPoint = Random.Range(-1f, 1f);
+        DirectionUpdate();
+    }
 
-	private void DirectionUpdate() {
+
+    void OnCollisionEnter(Collision collision)
+    {
+        print(collision);
+        DirectionUpdate();
+    }
+
+    private void DirectionUpdate() {
 
         UpdateTime = NewRandUpdate();
-		t = 0;
+        t = 0;
         var RendererWall = SelectedWall.GetComponent<Renderer>();
         DestinationPos = RandomPointInBox(RendererWall.bounds.center, RendererWall.bounds.size);
         DestinationPos.z = -0.02f;
-	}
 
-	private void FixedUpdate () 
-	{  
-		//GLOBAL 
-		t += Time.deltaTime;
 
-		if (t >= UpdateTime) {
-			DirectionUpdate();
-		}
+        float directonValue = DestinationPos.x - transform.position.x;
+        var newRotation = Quaternion.Euler(directonValue * 360, -90f, 90f);
+        DestinatopmRotation = newRotation;
 
-		//LERP
-		CurrentPos = transform.position;
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (Flying == true)
+        {
+            Fly();
+        } else
+        {
+            Walk();
+        }
+    }
+
+    public void Walk()
+    {
+        //GLOBAL 
+        t += Time.deltaTime;
+
+        if (t >= UpdateTime)
+        {
+            if(Dying != true)
+            {
+                DirectionUpdate();
+            }
+        }
+
+        //LERP
+        CurrentPos = transform.position;
+        CurrentRotation = transform.rotation;
 
         var directionVector = Vector3.Lerp(CurrentPos, DestinationPos, t * _speed);
+        var directionAngfle = Quaternion.Lerp(CurrentRotation, DestinatopmRotation, t * (_speed * 4));
 
         transform.position = directionVector;
-
-
-        float relativePos = DestinationPos.x - transform.position.x;
-        var newRotation = new Vector3(180 * relativePos, -90f,90f);
-        transform.eulerAngles = newRotation;
-
+        transform.rotation = directionAngfle;
 
         //KILLING WHEN TIME IS OVER
         LifeTimer += Time.deltaTime;
 
-		if (LifeTimer >= _TimeBeforeDeath) {
-			Destroy (gameObject);
-		}
-	}
+        if (LifeTimer >= (_TimeBeforeDeath - 4))
+        {
+            //print("diying");
+            DestinationPos = DeathPoint;
+            Dying = true;
+            var toChangeRed = GetComponentsInChildren<MeshRenderer>();
+
+            foreach (var bees in toChangeRed)
+            {
+                bees.material.color = new Color(255, 0, 0);
+            }
+
+            if (LifeTimer >= _TimeBeforeDeath)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
 	public float NewRandUpdate() {
 		return Random.Range(0, _MaxRefreshRate);
@@ -90,7 +126,7 @@ public class WalkingBees : MonoBehaviour {
     {
 
         return center + new Vector3(
-           ((Random.value - 0.5f) * size.x) * 0.1f + centerPoint,
+           ((Random.value - 0.5f) * size.x) + centerPoint,
            (Random.value - 0.5f) * size.y,
            (Random.value - 0.5f) * size.z
         );

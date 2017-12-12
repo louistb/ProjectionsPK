@@ -14,6 +14,7 @@ public class FlyingBees : MonoBehaviour {
 
     private Transform center;
     private Quaternion _facing;
+
 	void Awake() {
 		Controller = GameObject.Find ("Bees_System").GetComponent<BeesController>();
         center = GameObject.Find("Bees_System").transform;
@@ -28,7 +29,7 @@ public class FlyingBees : MonoBehaviour {
 	void Start () 
 	{
 		UpdateTime = NewRandUpdate();
-		DirectionUpdate();
+        DirectionUpdateFly();
         _facing = transform.rotation;
     }
 		
@@ -36,10 +37,10 @@ public class FlyingBees : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
 	{
 		print (collision);
-		DirectionUpdate ();
+        DirectionUpdateFly();
 	}
 
-    private void DirectionUpdate()
+    private void DirectionUpdateFly()
     {
         UpdateTime = NewRandUpdate();
         t = 0;
@@ -57,17 +58,23 @@ public class FlyingBees : MonoBehaviour {
         }
     }
 
-	private void FixedUpdate () 
-	{  
-		//GLOBAL 
-		t += Time.deltaTime;
+	public void FixedUpdate() 
+	{
+        Fly();
+	}
 
-		if (t >= UpdateTime) {
-			DirectionUpdate();
-		}
+    public void Fly()
+    {
+        //GLOBAL 
+        t += Time.deltaTime;
 
-		//LERP
-		CurrentPos = transform.position;
+        if (t >= UpdateTime)
+        {
+            DirectionUpdateFly();
+        }
+
+        //LERP
+        CurrentPos = transform.position;
 
         var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t * _speed);
 
@@ -80,13 +87,14 @@ public class FlyingBees : MonoBehaviour {
         //KILLING WHEN TIME IS OVER
         LifeTimer += Time.deltaTime;
 
-		if (LifeTimer >= _TimeBeforeDeath) {
-			Destroy (gameObject);
-		}
-	}
+        if (LifeTimer >= _TimeBeforeDeath)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-	public float NewRandUpdate() {
-		return Random.Range(0, _MaxRefreshRate);
+    public float NewRandUpdate() {
+	    return Random.Range(0, _MaxRefreshRate);
 	}
 		
 }
