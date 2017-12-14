@@ -13,6 +13,7 @@ public class FlyingBees : MonoBehaviour {
 
 
     private Transform center;
+    private Renderer _FlyZone;
     private Quaternion _facing;
 
 	void Awake() {
@@ -24,7 +25,9 @@ public class FlyingBees : MonoBehaviour {
 		_RangeDirectionX = Controller.RangeDirectionX;
 		_RangeDirectionY = Controller.RangeDirectionY;
 		_RangeDirectionZ = Controller.RangeDirectionZ;
-	}
+        _FlyZone = Controller.FlyZone;
+
+    }
 
 	void Start () 
 	{
@@ -44,18 +47,7 @@ public class FlyingBees : MonoBehaviour {
     {
         UpdateTime = NewRandUpdate();
         t = 0;
-        if (InAttraction = true)
-        {
-            DestinationPos.x = center.position.x + Random.Range(-_RangeDirectionX / 10, _RangeDirectionX / 10);
-            DestinationPos.y = center.position.y + Random.Range(-_RangeDirectionY / 10, _RangeDirectionY / 10);
-            DestinationPos.z = center.position.z + Random.Range(0, -_RangeDirectionZ / 10);
-        }
-        else
-        {
-            DestinationPos.x = center.position.x + Random.Range(-_RangeDirectionX, _RangeDirectionX);
-            DestinationPos.y = center.position.y + Random.Range(-_RangeDirectionY, _RangeDirectionY);
-            DestinationPos.z = center.position.z + Random.Range(0, -_RangeDirectionZ);
-        }
+        DestinationPos = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
     }
 
 	public void FixedUpdate() 
@@ -76,7 +68,7 @@ public class FlyingBees : MonoBehaviour {
         //LERP
         CurrentPos = transform.position;
 
-        var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t * _speed);
+        var directionVector = Vector3.Lerp(CurrentPos, DestinationPos, t * _speed);
 
         transform.position = directionVector;
 
@@ -96,5 +88,15 @@ public class FlyingBees : MonoBehaviour {
     public float NewRandUpdate() {
 	    return Random.Range(0, _MaxRefreshRate);
 	}
-		
+
+    private Vector3 RandomPointInBox(Vector3 center, Vector3 size)
+    {
+
+        return center + new Vector3(
+           ((Random.value - 0.5f) * size.x),
+           (Random.value - 0.5f) * size.y,
+           (Random.value - 0.5f) * size.z
+        );
+    }
+
 }
