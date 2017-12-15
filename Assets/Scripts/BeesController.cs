@@ -13,6 +13,7 @@ public class BeesController : MonoBehaviour {
     [Header("General Settings")]
     public int NbOfBees;
     public int FlyingPourcentage;
+    public bool auto;
 
     [Header("Flying")]
     public float MaxRefreshRate;
@@ -38,6 +39,11 @@ public class BeesController : MonoBehaviour {
 
     private void Start()
     {
+        if(auto == true)
+        {
+            InvokeRepeating("NewBees", 0f, TimeBeforeDeathWalk);
+        }
+
         Walls = GameObject.FindGameObjectsWithTag("ZoneWalk");
         SpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
     }
@@ -74,7 +80,7 @@ public class BeesController : MonoBehaviour {
 		}
 	}
 	void NewBees() {
-        for (var i = 0; i <= NbOfBees; i++) {
+        for (var i = 1; i <= NbOfBees; i++) {
             var RandomRate = Random.Range(0, 100);
             var newRotation = Quaternion.Euler(-90f, 0f, 0f);
             var Spawn = SpawnPoints[Random.Range(0, SpawnPoints.Length)];

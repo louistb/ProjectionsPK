@@ -12,6 +12,7 @@ public class WalkingBees : FlyingBees {
     public bool InAttraction, Flying,Dying;
 
     private Quaternion CurrentRotation, DestinatopmRotation;
+    private Vector3 FallPosition;
 
     public GameObject SelectedWall;
 
@@ -33,7 +34,7 @@ public class WalkingBees : FlyingBees {
     {
         UpdateTime = NewRandUpdate();
         var RendererWall = SelectedWall.GetComponent<Renderer>();
-        centerPoint = Random.Range(-1f, 1f);
+        centerPoint = Random.Range(-1.4f, 1.4f);
         DirectionUpdate();
     }
 
@@ -101,7 +102,8 @@ public class WalkingBees : FlyingBees {
         if (LifeTimer >= (_TimeBeforeDeath - 4))
         {
             //print("diying");
-            DestinationPos = DeathPoint;
+            FallPosition = new Vector3(CurrentPos.x, CurrentPos.y - 6, CurrentPos.z);
+            DestinationPos = FallPosition;
             Dying = true;
             var toChangeRed = GetComponentsInChildren<MeshRenderer>();
 
