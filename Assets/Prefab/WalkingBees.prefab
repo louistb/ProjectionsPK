@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114814542679659234}
   m_Layer: 0
   m_Name: WalkingBees
-  m_TagString: Untagged
+  m_TagString: bee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +198,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -248,23 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418ce8794bd04e74590c47ffa78f7f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MaxRefreshRate: 0
-  _TimeBeforeDeath: 0
-  _speed: 0
-  _RangeDirectionY: 0
-  _RangeDirectionX: 0
-  _RangeDirectionZ: 0
-  _MaxFlyRate: 0
-  Controller: {fileID: 0}
-  LifeTimer: 0
-  t: 0
-  UpdateTime: 0
-  CurrentPos: {x: 0, y: 0, z: 0}
-  DestinationPos: {x: 0, y: 0, z: 0}
-  AtractPos: {x: 0, y: 0, z: 0}
-  FallPosition: {x: 0, y: 0, z: 0}
-  InAttraction: 0
-  Dying: 0
   _MaxRefreshRate: 0
   _TimeBeforeDeath: 0
   _speed: 0

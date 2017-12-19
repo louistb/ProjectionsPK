@@ -41,7 +41,6 @@ public class WalkingBees : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        print(collision);
         DirectionUpdate();
     }
 
@@ -51,7 +50,7 @@ public class WalkingBees : MonoBehaviour {
         t = 0;
         var RendererWall = SelectedWall.GetComponent<Renderer>();
         DestinationPos = RandomPointInBox(RendererWall.bounds.center, RendererWall.bounds.size);
-        DestinationPos.z = -0.8f;
+        DestinationPos.z = -0.5f;
 
 
         float directonValue = DestinationPos.x - transform.position.x;

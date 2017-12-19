@@ -39,7 +39,6 @@ public class FlyingBees : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		print (collision);
         DirectionUpdateFly();
 	}
 
@@ -79,7 +78,7 @@ public class FlyingBees : MonoBehaviour {
         //KILLING WHEN TIME IS OVER
         LifeTimer += Time.deltaTime;
 
-		if (LifeTimer >= (_TimeBeforeDeath - 4))
+		if (LifeTimer >= (_TimeBeforeDeath - 10))
 		{
 			//print("diying");
 			FallPosition = new Vector3(CurrentPos.x, CurrentPos.y - 2, CurrentPos.z);
