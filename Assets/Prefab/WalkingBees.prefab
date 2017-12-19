@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1380437460589136
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,11 +259,31 @@ MonoBehaviour:
   LifeTimer: 0
   t: 0
   UpdateTime: 0
+  CurrentPos: {x: 0, y: 0, z: 0}
+  DestinationPos: {x: 0, y: 0, z: 0}
+  AtractPos: {x: 0, y: 0, z: 0}
+  FallPosition: {x: 0, y: 0, z: 0}
+  InAttraction: 0
+  Dying: 0
+  _MaxRefreshRate: 0
+  _TimeBeforeDeath: 0
+  _speed: 0
+  _RangeDirectionY: 0
+  _RangeDirectionX: 0
+  _RangeDirectionZ: 0
+  _MaxFlyRate: 0
+  Controller: {fileID: 0}
+  LifeTimer: 0
+  t: 0
+  UpdateTime: 0
   centerPoint: 0
   CurrentPos: {x: 0, y: 0, z: 0}
   DestinationPos: {x: 0, y: 0, z: 0}
   AtractPos: {x: 0, y: 0, z: 0}
+  DeathPoint: {x: 0, y: 0, z: 0}
   InAttraction: 0
+  Flying: 0
+  Dying: 0
   SelectedWall: {fileID: 0}
 --- !u!135 &135680523006419494
 SphereCollider:

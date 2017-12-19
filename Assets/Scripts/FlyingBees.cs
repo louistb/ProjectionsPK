@@ -8,8 +8,8 @@ public class FlyingBees : MonoBehaviour {
 	public BeesController Controller;
 
 	public float LifeTimer,t,UpdateTime;
-	public Vector3 CurrentPos, DestinationPos,AtractPos;
-	public bool InAttraction;
+	public Vector3 CurrentPos, DestinationPos,AtractPos,FallPosition;
+	public bool InAttraction,Dying;
 
 
     private Transform center;
@@ -79,10 +79,24 @@ public class FlyingBees : MonoBehaviour {
         //KILLING WHEN TIME IS OVER
         LifeTimer += Time.deltaTime;
 
-        if (LifeTimer >= _TimeBeforeDeath)
-        {
-            Destroy(gameObject);
-        }
+		if (LifeTimer >= (_TimeBeforeDeath - 4))
+		{
+			//print("diying");
+			FallPosition = new Vector3(CurrentPos.x, CurrentPos.y - 2, CurrentPos.z);
+			DestinationPos = FallPosition;
+			Dying = true;
+			//            var toChangeRed = GetComponentsInChildren<MeshRenderer>();
+
+			//            foreach (var bees in toChangeRed)
+			//            {
+			//                bees.material.color = new Color(255, 0, 0);
+			//            }
+
+			if (LifeTimer >= _TimeBeforeDeath)
+			{
+				Destroy(gameObject);
+			}
+		}
     }
 
     public float NewRandUpdate() {

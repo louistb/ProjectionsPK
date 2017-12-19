@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WalkingBees : FlyingBees {
+public class WalkingBees : MonoBehaviour {
 
     public float _MaxRefreshRate, _TimeBeforeDeath, _speed;
     public float _RangeDirectionY, _RangeDirectionX, _RangeDirectionZ, _MaxFlyRate;
@@ -51,7 +51,7 @@ public class WalkingBees : FlyingBees {
         t = 0;
         var RendererWall = SelectedWall.GetComponent<Renderer>();
         DestinationPos = RandomPointInBox(RendererWall.bounds.center, RendererWall.bounds.size);
-        DestinationPos.z = -0.02f;
+        DestinationPos.z = -0.8f;
 
 
         float directonValue = DestinationPos.x - transform.position.x;
@@ -66,7 +66,7 @@ public class WalkingBees : FlyingBees {
     {
         if (Flying == true)
         {
-            Fly();
+            //Fly();
         } else
         {
             Walk();
@@ -99,18 +99,12 @@ public class WalkingBees : FlyingBees {
         //KILLING WHEN TIME IS OVER
         LifeTimer += Time.deltaTime;
 
-        if (LifeTimer >= (_TimeBeforeDeath - 4))
+        if (LifeTimer >= (_TimeBeforeDeath - 10))
         {
             //print("diying");
-            FallPosition = new Vector3(CurrentPos.x, CurrentPos.y - 6, CurrentPos.z);
+            FallPosition = new Vector3(CurrentPos.x, CurrentPos.y - 2, CurrentPos.z);
             DestinationPos = FallPosition;
             Dying = true;
-            var toChangeRed = GetComponentsInChildren<MeshRenderer>();
-
-            foreach (var bees in toChangeRed)
-            {
-                bees.material.color = new Color(255, 0, 0);
-            }
 
             if (LifeTimer >= _TimeBeforeDeath)
             {
