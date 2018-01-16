@@ -5,6 +5,8 @@ using UnityEngine;
 public class ContaminationWave : MonoBehaviour {
 
     public Animator ContaminationAnimator;
+    public GameObject ParticalComtamination;
+    public float Duration;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -37,9 +39,25 @@ public class ContaminationWave : MonoBehaviour {
 
     public IEnumerator Wave()
     {
+        var WaveParticle = Instantiate(ParticalComtamination, transform.position,Quaternion.Euler(0f,90f,0f)) as GameObject;
+
+        var System = WaveParticle.GetComponent<ParticleSystem>();
+        var ps = System.main;
+
+        System.Stop();
+        ps.duration = Duration;
+        System.Play();
+            
+        StartCoroutine(KillAfterWave(WaveParticle, Duration));
         ContaminationAnimator.SetBool("Infection", true);
         yield return new WaitForSeconds(1f);
         ContaminationAnimator.SetBool("Infection", false);
+    }
+
+    public IEnumerator KillAfterWave(GameObject toKill,float delay)
+    {
+        yield  return new WaitForSeconds(delay + 5f);
+        Destroy(toKill);
     }
 
 }

@@ -22,9 +22,9 @@ public class FlyingBees : MonoBehaviour {
         _MaxRefreshRate = Controller.MaxRefreshRate;
 		_TimeBeforeDeath = Controller.TimeBeforeDeath - Controller.TimeBeforeDeath / Random.Range(0,Controller.TimeBeforeDeath/3);
 		_speed = Controller.speed;
-		_RangeDirectionX = Controller.RangeDirectionX;
-		_RangeDirectionY = Controller.RangeDirectionY;
-		_RangeDirectionZ = Controller.RangeDirectionZ;
+		//_RangeDirectionX = Controller.RangeDirectionX;
+		//_RangeDirectionY = Controller.RangeDirectionY;
+		//_RangeDirectionZ = Controller.RangeDirectionZ;
         _FlyZone = Controller.FlyZone;
 
     }
@@ -56,8 +56,10 @@ public class FlyingBees : MonoBehaviour {
 
     public void Fly()
     {
+
         //GLOBAL 
         t += Time.deltaTime;
+        //t = t * t * t * (t * (6f * t - 15f) + 10f);
 
         if (t >= UpdateTime)
         {
@@ -67,29 +69,19 @@ public class FlyingBees : MonoBehaviour {
         //LERP
         CurrentPos = transform.position;
 
-        var directionVector = Vector3.Lerp(CurrentPos, DestinationPos, t * _speed);
+        var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t * _speed);
 
         transform.position = directionVector;
 
-        var rotation = Quaternion.LookRotation(directionVector);
-        rotation *= _facing;
-        transform.rotation = rotation;
+        transform.LookAt(DestinationPos, Vector3.right);
 
-        //KILLING WHEN TIME IS OVER
         LifeTimer += Time.deltaTime;
 
 		if (LifeTimer >= (_TimeBeforeDeath - 10))
 		{
-			//print("diying");
 			FallPosition = new Vector3(CurrentPos.x, CurrentPos.y - 2, CurrentPos.z);
 			DestinationPos = FallPosition;
 			Dying = true;
-			//            var toChangeRed = GetComponentsInChildren<MeshRenderer>();
-
-			//            foreach (var bees in toChangeRed)
-			//            {
-			//                bees.material.color = new Color(255, 0, 0);
-			//            }
 
 			if (LifeTimer >= _TimeBeforeDeath)
 			{
