@@ -10,7 +10,7 @@ public class FlyingBees : MonoBehaviour {
 	public float LifeTimer,t,UpdateTime;
 	public Vector3 CurrentPos, DestinationPos,AtractPos,FallPosition;
 	public bool InAttraction,Dying;
-
+    public FlockingClimax flocking;
 
     private Transform center;
     private Renderer _FlyZone;
@@ -22,9 +22,6 @@ public class FlyingBees : MonoBehaviour {
         _MaxRefreshRate = Controller.MaxRefreshRate;
 		_TimeBeforeDeath = Controller.TimeBeforeDeath - Controller.TimeBeforeDeath / Random.Range(0,Controller.TimeBeforeDeath/3);
 		_speed = Controller.speed;
-		//_RangeDirectionX = Controller.RangeDirectionX;
-		//_RangeDirectionY = Controller.RangeDirectionY;
-		//_RangeDirectionZ = Controller.RangeDirectionZ;
         _FlyZone = Controller.FlyZone;
 
     }
@@ -44,27 +41,31 @@ public class FlyingBees : MonoBehaviour {
 
     private void DirectionUpdateFly()
     {
-        UpdateTime = NewRandUpdate();
-        t = 0;
-        DestinationPos = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
+            UpdateTime = NewRandUpdate();
+            t = 0;
+            if (InAttraction == false)
+            {
+                DestinationPos = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
+            } else
+            {
+            DestinationPos = GameObject.Find("ClimaxFlocking(Clone)").GetComponent<FlockingClimax>().DestinationFlock;
+            }
     }
 
-	public void FixedUpdate() 
-	{
-        Fly();
+    public void FixedUpdate()
+    {
+            Fly();   
 	}
+
 
     public void Fly()
     {
 
         //GLOBAL 
         t += Time.deltaTime;
-        //t = t * t * t * (t * (6f * t - 15f) + 10f);
-
-        if (t >= UpdateTime)
-        {
-            DirectionUpdateFly();
-        }
+        if (t >= UpdateTime){
+           DirectionUpdateFly();
+        }   
 
         //LERP
         CurrentPos = transform.position;

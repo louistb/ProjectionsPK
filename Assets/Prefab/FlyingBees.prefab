@@ -71,8 +71,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674223202446700}
   m_LocalRotation: {x: -0.5956692, y: 0.38102266, z: -0.38102266, w: 0.5956692}
-  m_LocalPosition: {x: -2.201531, y: -0.79932106, z: 7.1007147}
-  m_LocalScale: {x: 2.460274, y: 2.4602728, z: 2.4602728}
+  m_LocalPosition: {x: 9.398382, y: -5.542682, z: -0.5987656}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4357961791295506}
   m_Father: {fileID: 0}
@@ -207,7 +207,7 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 63bf7297d043aa2488ae2b2bd75b0532, type: 2}
+  - {fileID: 2100000, guid: b22fafa3374512b4ca0ed233e2ee7541, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -252,7 +252,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 0.9264706, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -324,6 +324,7 @@ MonoBehaviour:
   FallPosition: {x: 0, y: 0, z: 0}
   InAttraction: 0
   Dying: 0
+  flocking: {fileID: 114270787238635118, guid: 843548f10a4d6ca47ae48a4a4a015e31, type: 2}
 --- !u!135 &135680523006419494
 SphereCollider:
   m_ObjectHideFlags: 1

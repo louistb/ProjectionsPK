@@ -9,6 +9,9 @@ public class WalkingBees : MonoBehaviour {
 
     public float LifeTimer, t, UpdateTime, centerPoint;
     public Vector3 CurrentPos, DestinationPos, AtractPos, DeathPoint;
+
+    private Renderer _FlyZone;
+
     public bool InAttraction, Flying,Dying;
 
     private Quaternion CurrentRotation, DestinatopmRotation;
@@ -22,10 +25,7 @@ public class WalkingBees : MonoBehaviour {
         _MaxRefreshRate = Controller.MaxRefreshRate;
         _TimeBeforeDeath = Controller.TimeBeforeDeathWalk - Controller.TimeBeforeDeath / Random.Range(0, Controller.TimeBeforeDeath / 3);
         _speed = Controller.speedWalk;
-        //_RangeDirectionX = Controller.RangeDirectionX;
-        //_RangeDirectionY = Controller.RangeDirectionY;
-        //_RangeDirectionZ = Controller.RangeDirectionZ;
-
+        _FlyZone = Controller.FlyZone;
         Flying = false;
         Dying = false;
     }
@@ -38,6 +38,12 @@ public class WalkingBees : MonoBehaviour {
         DirectionUpdate();
     }
 
+    private void DirectionUpdateFly()
+    {
+        UpdateTime = NewRandUpdate();
+        t = 0;
+        DestinationPos = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -63,13 +69,7 @@ public class WalkingBees : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (Flying == true)
-        {
-            //Fly();
-        } else
-        {
             Walk();
-        }
     }
 
     public void Walk()
@@ -110,7 +110,43 @@ public class WalkingBees : MonoBehaviour {
         }
     }
 
-	public float NewRandUpdate() {
+    public void Fly()
+    {
+
+        //GLOBAL 
+        t += Time.deltaTime;
+
+        if (t >= UpdateTime)
+        {
+            DirectionUpdateFly();
+        }
+
+        //LERP
+        CurrentPos = transform.position;
+
+        var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t * _speed);
+
+        transform.position = directionVector;
+
+        transform.LookAt(DestinationPos, Vector3.right);
+
+        LifeTimer += Time.deltaTime;
+
+        if (LifeTimer >= (_TimeBeforeDeath - 10))
+        {
+            FallPosition = new Vector3(CurrentPos.x, CurrentPos.y - 2, CurrentPos.z);
+            DestinationPos = FallPosition;
+            Dying = true;
+
+            if (LifeTimer >= _TimeBeforeDeath)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+
+    public float NewRandUpdate() {
 		return Random.Range(0, _MaxRefreshRate);
 	}
 
