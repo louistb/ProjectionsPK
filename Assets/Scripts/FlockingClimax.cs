@@ -7,6 +7,7 @@ public class FlockingClimax : MonoBehaviour {
     public GameObject FlyingPrefab;
     public Vector3 DestinationFlock;
     public Renderer _FlyZone;
+    public GameObject FlockingObj;
 
     // Use this for initialization
     void Start() {
@@ -32,16 +33,6 @@ public class FlockingClimax : MonoBehaviour {
     }
 	// Update is called once per frame
 	void UpdateDirection() {
-        DestinationFlock = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
-    }
-
-    private Vector3 RandomPointInBox(Vector3 center, Vector3 size)
-    {
-
-        return center + new Vector3(
-           (Random.value -0.5f) * size.x,
-           (Random.value -0.5f) * size.y ,
-           (Random.value -0.5f) * size.z
-        );
+        DestinationFlock = FlockingObj.transform.position;
     }
 }

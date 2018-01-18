@@ -753,7 +753,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 45
+  field of view: 19
   orthographic: 0
   orthographic size: 0.73
   m_Depth: -1
@@ -778,7 +778,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 310249559}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6725, y: -0.16, z: -7.08}
+  m_LocalPosition: {x: 1.45, y: -0.16, z: -17.705}
   m_LocalScale: {x: 1.6878595, y: 1.6878569, z: 1.6878569}
   m_Children:
   - {fileID: 1809287369}
@@ -1536,8 +1536,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 802916393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21, y: -0.21, z: -0.588}
-  m_LocalScale: {x: 7.5263953, y: 1.9960203, z: 0.33660755}
+  m_LocalPosition: {x: -0.21, y: -0.033, z: -0.491}
+  m_LocalScale: {x: 4.8848534, y: 0.92540485, z: 0.19755168}
   m_Children: []
   m_Father: {fileID: 1036761295}
   m_RootOrder: 0
@@ -2040,8 +2040,8 @@ MonoBehaviour:
   auto: 1
   MaxRefreshRate: 1
   TimeBeforeDeath: 45
-  speed: 0.02
-  MaxFlyRate: 40
+  speed: 0.5
+  MaxFlyRate: 10
   FlyZone: {fileID: 802916395}
   MaxRefreshRateWalk: 0.2
   TimeBeforeDeathWalk: 45
@@ -7200,7 +7200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1981270268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7473,7 +7473,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4144938438420372, guid: 5c00de510451ac043a49153a6acf2a6f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.94132
+      value: 1.66
       objectReference: {fileID: 0}
     - target: {fileID: 4144938438420372, guid: 5c00de510451ac043a49153a6acf2a6f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7502,7 +7502,7 @@ Prefab:
     - target: {fileID: 198426073368986356, guid: 5c00de510451ac043a49153a6acf2a6f,
         type: 2}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 0.334
+      value: 0.222
       objectReference: {fileID: 0}
     - target: {fileID: 198426073368986356, guid: 5c00de510451ac043a49153a6acf2a6f,
         type: 2}

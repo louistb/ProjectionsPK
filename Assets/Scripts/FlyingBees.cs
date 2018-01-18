@@ -63,6 +63,7 @@ public class FlyingBees : MonoBehaviour {
 
         //GLOBAL 
         t += Time.deltaTime;
+
         if (t >= UpdateTime){
            DirectionUpdateFly();
         }   
@@ -70,7 +71,7 @@ public class FlyingBees : MonoBehaviour {
         //LERP
         CurrentPos = transform.position;
 
-        var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t * _speed);
+        var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t * t);
 
         transform.position = directionVector;
 
