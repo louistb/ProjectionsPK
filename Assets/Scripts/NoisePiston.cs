@@ -8,6 +8,7 @@ public class NoisePiston : MonoBehaviour
 
     private float amplitude = 0.3f;
     private float period;
+    private bool NoiseMove;
 
     protected void Start()
     {
@@ -15,10 +16,12 @@ public class NoisePiston : MonoBehaviour
         period = Random.Range(1f,3f);
     }
 
-    protected void Update()
+    public void Update()
     {
         float theta = Time.timeSinceLevelLoad / period;
         float distance = amplitude * Mathf.Sin(theta);
         transform.position = startPos + Vector3.forward * distance;
     }
+
+
 }
