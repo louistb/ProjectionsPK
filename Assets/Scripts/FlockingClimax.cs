@@ -35,4 +35,8 @@ public class FlockingClimax : MonoBehaviour {
 	void UpdateDirection() {
         DestinationFlock = FlockingObj.transform.position;
     }
+
+	public void Exit() {
+	
+	}
 }

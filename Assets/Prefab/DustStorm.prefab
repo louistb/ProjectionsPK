@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1979564014352174}
   m_LocalRotation: {x: 0, y: 0.6841653, z: 0, w: 0.729327}
-  m_LocalPosition: {x: 1.51, y: -0.78624004, z: -0.4}
+  m_LocalPosition: {x: -1.6927102, y: -0.16953519, z: -0.5142572}
   m_LocalScale: {x: 0.07, y: -1.61, z: 0.21}
   m_Children: []
   m_Father: {fileID: 0}
@@ -179,7 +179,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.5294118, g: 0.49803922, b: 0.8392157, a: 1}
-      maxColor: {r: 0.5294118, g: 0.49803922, b: 0.8392157, a: 1}
+      maxColor: {r: 0.5294118, g: 0.49803922, b: 0.8392157, a: 0.29}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -242,7 +242,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.54
-      minScalar: 10.3
+      minScalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
