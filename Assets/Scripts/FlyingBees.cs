@@ -42,13 +42,12 @@ public class FlyingBees : MonoBehaviour {
     private void DirectionUpdateFly()
     {
             UpdateTime = NewRandUpdate();
-            t = 0;
             if (InAttraction == false)
             {
-                DestinationPos = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
+			t = 0;
+			DestinationPos = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
             } else
             {
-            DestinationPos = GameObject.Find("ClimaxFlocking(Clone)").GetComponent<FlockingClimax>().DestinationFlock;
             }
     }
 
@@ -60,7 +59,6 @@ public class FlyingBees : MonoBehaviour {
 
     public void Fly()
     {
-
         //GLOBAL 
         t += Time.deltaTime;
 
@@ -68,6 +66,12 @@ public class FlyingBees : MonoBehaviour {
            DirectionUpdateFly();
         }   
 
+		if (InAttraction == true) {
+			var preRandom = GameObject.Find("ClimaxFlocking(Clone)").GetComponent<FlockingClimax>().DestinationFlock;
+			var randomFlock = new Vector3 (preRandom.x + Random.Range (-2f, 2f), preRandom.y + Random.Range (-2f,2f), preRandom.z + Random.Range (-2f,2f));
+			DestinationPos = randomFlock;
+			t = 0;
+		}
         //LERP
         CurrentPos = transform.position;
 
