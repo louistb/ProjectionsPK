@@ -62,16 +62,24 @@ public class FlyingBees : MonoBehaviour {
         //GLOBAL 
         t += Time.deltaTime;
 
-        if (t >= UpdateTime){
-           DirectionUpdateFly();
-        }   
+        if (InAttraction == true)
+        {
+            t = 0;
+            var preRandom = GameObject.Find("ClimaxFlocking(Clone)").GetComponent<FlockingClimax>().DestinationFlock;
+            var randomFlock = new Vector3(preRandom.x + Random.Range(-2f, 2f), preRandom.y + Random.Range(-2f, 2f), preRandom.z + Random.Range(-2f, 2f));
+            DestinationPos = randomFlock;
 
-		if (InAttraction == true) {
-			var preRandom = GameObject.Find("ClimaxFlocking(Clone)").GetComponent<FlockingClimax>().DestinationFlock;
-			var randomFlock = new Vector3 (preRandom.x + Random.Range (-2f, 2f), preRandom.y + Random.Range (-2f,2f), preRandom.z + Random.Range (-2f,2f));
-			DestinationPos = randomFlock;
-			t = 0;
-		}
+            transform.position = randomFlock;
+
+            transform.LookAt(DestinationPos, Vector3.right);
+
+        }
+        else { 
+
+            if (t >= UpdateTime){
+               DirectionUpdateFly();
+            }   
+
         //LERP
         CurrentPos = transform.position;
 
@@ -94,6 +102,7 @@ public class FlyingBees : MonoBehaviour {
 				Destroy(gameObject);
 			}
 		}
+        }
     }
 
     public float NewRandUpdate() {

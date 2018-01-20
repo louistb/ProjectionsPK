@@ -6,14 +6,14 @@ public class NoisePiston : MonoBehaviour
 {
     Vector3 startPos;
 
-    private float amplitude = 0.1f;
+    private float amplitude = 0.04f;
     private float period;
     private bool NoiseMove;
 	private Vector3 NoiseVector;
 
     protected void Start()
     {
-        period = Random.Range(1f,3f);
+        period = Random.Range(1f,2f);
     }
 
     public void Update()
