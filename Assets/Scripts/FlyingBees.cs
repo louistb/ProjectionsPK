@@ -83,7 +83,7 @@ public class FlyingBees : MonoBehaviour {
         //LERP
         CurrentPos = transform.position;
 
-        var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t * t);
+        var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t);
 
         transform.position = directionVector;
 

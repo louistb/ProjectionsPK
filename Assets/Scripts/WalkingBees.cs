@@ -56,7 +56,7 @@ public class WalkingBees : MonoBehaviour {
         t = 0;
         var RendererWall = SelectedWall.GetComponent<Renderer>();
         DestinationPos = RandomPointInBox(RendererWall.bounds.center, RendererWall.bounds.size);
-        DestinationPos.z = -0.43f;
+        DestinationPos.z = -0.3595f;
 
 
         float directonValue = DestinationPos.x - transform.position.x;
