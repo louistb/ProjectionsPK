@@ -25,6 +25,7 @@ public class WalkingBees : MonoBehaviour {
         _TimeBeforeDeath = Controller.TimeBeforeDeathWalk - Controller.TimeBeforeDeath / Random.Range(0, Controller.TimeBeforeDeath / 3);
         _speed = Controller.speedWalk;
         _FlyZone = Controller.FlyZone;
+        _MaxRefreshRate = Controller.MaxRefreshRateWalk;
         Flying = false;
         Dying = false;
     }
@@ -58,11 +59,6 @@ public class WalkingBees : MonoBehaviour {
         DestinationPos.z = -0.3595f;
 
 
-        float directonValue = DestinationPos.x - transform.position.x;
-        var newRotation = Quaternion.Euler(directonValue * 360, -90f, 90f);
-        DestinatopmRotation = newRotation;
-
-
 
     }
 
@@ -90,6 +86,7 @@ public class WalkingBees : MonoBehaviour {
         var directionVector = Vector3.Lerp(CurrentPos, DestinationPos, t * _speed);
 
         transform.position = directionVector;
+
         transform.LookAt(DestinationPos,Vector3.back);
 
         //KILLING WHEN TIME IS OVER

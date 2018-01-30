@@ -29,9 +29,10 @@ public class FlockingClimax : MonoBehaviour {
                 newObject.transform.localScale = go.transform.localScale;
                 newObject.AddComponent<TrailRenderer>();
                 var TrailRendererObj = newObject.GetComponent<TrailRenderer>();
-                TrailRendererObj.endWidth = 0.02f;
-                TrailRendererObj.startWidth = 0.02f;
+                TrailRendererObj.endWidth = 0.012f;
+                TrailRendererObj.startWidth = 0.012f;
                 TrailRendererObj.material = trailMat;
+            TrailRendererObj.time = 1f;
                 DestroyImmediate(go);
             }
     }

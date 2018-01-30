@@ -50,11 +50,6 @@ public class BeesController : MonoBehaviour {
 			NewBees();
 		}
 
-		if (Input.GetKeyDown (KeyCode.C)) {
-			intheScene = GameObject.FindGameObjectsWithTag ("bee");
-			print (intheScene.Length);
-		}
-
         if (Input.GetKeyDown(KeyCode.G))
         {
             intheScene = GameObject.FindGameObjectsWithTag("bee");
