@@ -4,7 +4,7 @@ using System.Collections;
 public class WalkingBees : MonoBehaviour {
 
     public float _MaxRefreshRate, _TimeBeforeDeath, _speed;
-    public float _RangeDirectionY, _RangeDirectionX, _RangeDirectionZ, _MaxFlyRate;
+    public float _RangeDirectionY, _RangeDirectionX, _RangeDirectionZ;
     public BeesController Controller;
 
     public float LifeTimer, t, UpdateTime, centerPoint;
@@ -22,7 +22,6 @@ public class WalkingBees : MonoBehaviour {
     void Awake() {
         Controller = GameObject.Find("Bees_System").GetComponent<BeesController>();
 
-        _MaxRefreshRate = Controller.MaxRefreshRate;
         _TimeBeforeDeath = Controller.TimeBeforeDeathWalk - Controller.TimeBeforeDeath / Random.Range(0, Controller.TimeBeforeDeath / 3);
         _speed = Controller.speedWalk;
         _FlyZone = Controller.FlyZone;

@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4380744250530142
 Transform:
   m_ObjectHideFlags: 1
@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2737c04975c52f4e873b188fef4e76d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyingPrefab: {fileID: 1674223202446700, guid: fa7b4c888a20b4a0d9fc45e9b41abff3,
+  FlyingPrefab: {fileID: 1406261212343002, guid: c0fa7a1f321e8354f959f0c8dd57300d,
     type: 2}
   DestinationFlock: {x: 0, y: 0, z: 0}
   _FlyZone: {fileID: 0}
-  FlockingObj: {fileID: 0}
+  FlyZone: {fileID: 0}

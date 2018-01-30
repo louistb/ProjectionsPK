@@ -19,14 +19,10 @@ public class BeesController : MonoBehaviour {
     public float MaxRefreshRate;
     public float TimeBeforeDeath;
     public float speed;
-    public float MaxFlyRate;
-    //public float RangeDirectionY;
-    //public float RangeDirectionX;
-    //public float RangeDirectionZ;
     public Renderer FlyZone;
 
     [Header("Walking")]
-    public float MaxRefreshRateWalk;
+    public float MaxRefreshRateWalk; 
     public float TimeBeforeDeathWalk;
     public float speedWalk;
   
