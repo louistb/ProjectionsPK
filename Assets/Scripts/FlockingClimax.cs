@@ -9,6 +9,7 @@ public class FlockingClimax : MonoBehaviour {
     public Renderer _FlyZone;
     public GameObject FlyZone;
     public Material trailMat;
+	public float startWidth, endWidth,time;
 
     // Use this for initialization
     void Start() {
@@ -29,11 +30,11 @@ public class FlockingClimax : MonoBehaviour {
                 newObject.transform.localScale = go.transform.localScale;
                 newObject.AddComponent<TrailRenderer>();
                 newObject.tag = "bee";
-            var TrailRendererObj = newObject.GetComponent<TrailRenderer>();
-                TrailRendererObj.endWidth = 0.012f;
-                TrailRendererObj.startWidth = 0.012f;
+            	var TrailRendererObj = newObject.GetComponent<TrailRenderer>();
+				TrailRendererObj.endWidth = endWidth;
+				TrailRendererObj.startWidth = startWidth;
                 TrailRendererObj.material = trailMat;
-            TrailRendererObj.time = 1f;
+				TrailRendererObj.time = time;
                 DestroyImmediate(go);
             }
     }

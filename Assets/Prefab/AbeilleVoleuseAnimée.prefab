@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4265010429748918}
   - component: {fileID: 95343546340214812}
   - component: {fileID: 114256938489993088}
+  - component: {fileID: 135029432610157064}
   m_Layer: 0
   m_Name: "AbeilleVoleuseAnim\xE9e"
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406261212343002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7173054, y: -1.2542746, z: -0.49916065}
+  m_LocalPosition: {x: -1.1373616, y: 0.6000657, z: -0.49916065}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4545516895767548}
@@ -132,7 +133,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452769661104902}
-  m_LocalRotation: {x: 0.53400636, y: 0.7909407, z: -0.29078466, w: -0.068514034}
+  m_LocalRotation: {x: 0.5340064, y: 0.7909408, z: -0.2907847, w: -0.06851404}
   m_LocalPosition: {x: -0.009952424, y: -0.0019051846, z: -0.0016075609}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children: []
@@ -379,3 +380,15 @@ MonoBehaviour:
   InAttraction: 0
   Dying: 0
   flocking: {fileID: 0}
+--- !u!135 &135029432610157064
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406261212343002}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.03
+  m_Center: {x: 0, y: 0, z: 0}

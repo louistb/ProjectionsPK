@@ -40,6 +40,7 @@ public class ContaminationWave : MonoBehaviour {
     public IEnumerator Wave()
     {
         var WaveParticle = Instantiate(ParticalComtamination, transform.position,Quaternion.Euler(0f,90f,0f)) as GameObject;
+		WaveParticle.transform.parent = GameObject.Find ("Contamination").transform;
 
         var System = WaveParticle.GetComponent<ParticleSystem>();
         var ps = System.main;

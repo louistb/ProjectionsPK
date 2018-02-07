@@ -40,7 +40,7 @@ MonoBehaviour:
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       intensity: 1.71
       radius: 8.33
@@ -97,7 +97,7 @@ MonoBehaviour:
       logMin: -3
       logMax: 1
   bloom:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       bloom:
         intensity: 1.14
