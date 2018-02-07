@@ -23,4 +23,7 @@ public class UiController : MonoBehaviour {
 		WindSpeed.text = weatherData.SpeedWind.ToString() + " Kmh";
 		CurrentTemp.text = weatherData.CurrentTemperature.ToString() + " C";
 	}
+	public void Quit() {
+		Application.Quit();
+	}
 }
