@@ -8,6 +8,7 @@ public class PkData : MonoBehaviour {
 	public string MeteoUrl = "http://meteo.pqds.org/realtime.txt";
 	public float SpeedWind,MaxWindSpeed,CurrentTemperature,CurrentHumidity;
 	public string DirectionWind;
+    public WindUpdater wind;
 
 	private string[] dataArray;
 
@@ -30,7 +31,8 @@ public class PkData : MonoBehaviour {
 			dataArray = content.Split(splitChar);
 			//print (content);
 			SplitToValue (dataArray);
-			yield return new WaitForSecondsRealtime (10);
+            wind.UpdateWind(DirectionWind,15f,30f);
+            yield return new WaitForSecondsRealtime (10);
 		}
 
 

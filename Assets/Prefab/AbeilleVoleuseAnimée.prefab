@@ -104,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406261212343002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1373616, y: 0.6000657, z: -0.49916065}
+  m_LocalPosition: {x: 3.108259, y: 4.2499404, z: -2.3904438}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4545516895767548}
@@ -121,8 +121,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1063800975586680}
   m_LocalRotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.00034695, y: -0.0177, z: -0.011124}
+  m_LocalScale: {x: 2.2116127, y: 2.2116132, z: 2.2116127}
   m_Children: []
   m_Father: {fileID: 4265010429748918}
   m_RootOrder: 0
@@ -133,7 +133,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452769661104902}
-  m_LocalRotation: {x: 0.5340064, y: 0.7909408, z: -0.2907847, w: -0.06851404}
+  m_LocalRotation: {x: 0.53400636, y: 0.7909407, z: -0.29078466, w: -0.068514034}
   m_LocalPosition: {x: -0.009952424, y: -0.0019051846, z: -0.0016075609}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children: []
@@ -160,8 +160,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363921938306976}
   m_LocalRotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.00034695, y: -0.017700002, z: -0.011124}
+  m_LocalScale: {x: 2.2116127, y: 2.2116132, z: 2.2116127}
   m_Children: []
   m_Father: {fileID: 4265010429748918}
   m_RootOrder: 1
@@ -180,9 +180,9 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 307a7deea6b44034e8aba374a40a8563, type: 2}
-  - {fileID: 2100000, guid: 307a7deea6b44034e8aba374a40a8563, type: 2}
-  - {fileID: 2100000, guid: 307a7deea6b44034e8aba374a40a8563, type: 2}
+  - {fileID: 2100000, guid: e94df2b513fe7cc409e69330c77544ad, type: 2}
+  - {fileID: 2100000, guid: e94df2b513fe7cc409e69330c77544ad, type: 2}
+  - {fileID: 2100000, guid: e94df2b513fe7cc409e69330c77544ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -216,8 +216,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 307a7deea6b44034e8aba374a40a8563, type: 2}
-  - {fileID: 2100002, guid: 7f283b39660358c4ea8f128d4f6a26ac, type: 3}
+  - {fileID: 2100000, guid: e94df2b513fe7cc409e69330c77544ad, type: 2}
+  - {fileID: 2100000, guid: e94df2b513fe7cc409e69330c77544ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,8 +251,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 307a7deea6b44034e8aba374a40a8563, type: 2}
-  - {fileID: 2100000, guid: 307a7deea6b44034e8aba374a40a8563, type: 2}
+  - {fileID: 2100000, guid: e94df2b513fe7cc409e69330c77544ad, type: 2}
+  - {fileID: 2100000, guid: e94df2b513fe7cc409e69330c77544ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -286,7 +286,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 307a7deea6b44034e8aba374a40a8563, type: 2}
+  - {fileID: 2100000, guid: e94df2b513fe7cc409e69330c77544ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -362,24 +362,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a4cd4c29a2d4a4ba9af745dd6d2995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MaxRefreshRate: 0
-  _TimeBeforeDeath: 0
+  destinations: []
+  nbOfPointsinPath: 12
   _speed: 0
-  _RangeDirectionY: 0
-  _RangeDirectionX: 0
-  _RangeDirectionZ: 0
-  _MaxFlyRate: 0
+  _TimeBeforeDeath: 0
+  _FlyZone: {fileID: 0}
   Controller: {fileID: 0}
   LifeTimer: 0
-  t: 0
-  UpdateTime: 0
-  CurrentPos: {x: 0, y: 0, z: 0}
-  DestinationPos: {x: 0, y: 0, z: 0}
-  AtractPos: {x: 0, y: 0, z: 0}
-  FallPosition: {x: 0, y: 0, z: 0}
   InAttraction: 0
   Dying: 0
-  flocking: {fileID: 0}
 --- !u!135 &135029432610157064
 SphereCollider:
   m_ObjectHideFlags: 1

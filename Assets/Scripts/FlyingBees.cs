@@ -1,121 +1,75 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FlyingBees : MonoBehaviour {
 
-	public float _MaxRefreshRate,_TimeBeforeDeath,_speed;
-	public float _RangeDirectionY,_RangeDirectionX,_RangeDirectionZ,_MaxFlyRate;
-	public BeesController Controller;
+public class FlyingBees : MonoBehaviour
+{
 
-	public float LifeTimer,t,UpdateTime;
-	public Vector3 CurrentPos, DestinationPos,AtractPos,FallPosition;
-	public bool InAttraction,Dying;
-    public FlockingClimax flocking;
+    public Vector3[] destinations;
+    public int nbOfPointsinPath = 12;
+    public float _speed, _TimeBeforeDeath;
+    public Renderer _FlyZone;
+    public BeesController Controller;
+    public float LifeTimer;
+    public bool InAttraction, Dying;
+    private string beeId;
+    private float time;
 
-    private Transform center;
-    private Renderer _FlyZone;
-    private Quaternion _facing;
+    private Hashtable param = new Hashtable();
 
-	void Awake() {
-		Controller = GameObject.Find ("Bees_System").GetComponent<BeesController>();
-        center = GameObject.Find("Bees_System").transform;
-        _MaxRefreshRate = Controller.MaxRefreshRate;
-		_TimeBeforeDeath = Controller.TimeBeforeDeath - Controller.TimeBeforeDeath / Random.Range(0,Controller.TimeBeforeDeath/3);
-		_speed = Controller.speed;
+    void Awake() {
+        Controller = GameObject.Find("Bees_System").GetComponent<BeesController>();
+        _TimeBeforeDeath = Controller.TimeBeforeDeath - Controller.TimeBeforeDeath / Random.Range(0, Controller.TimeBeforeDeath / 3);
+        _speed = Controller.speed;
         _FlyZone = Controller.FlyZone;
+        beeId = "bee" + UnityEngine.Random.Range(0, 20000).ToString() + UnityEngine.Random.Range(0, 20000).ToString();
+
 
     }
 
-	void Start () 
-	{
-		UpdateTime = NewRandUpdate();
-        DirectionUpdateFly();
-        _facing = transform.rotation;
-    }
-		
-
-	void OnCollisionEnter(Collision collision)
-	{
-        DirectionUpdateFly();
-	}
-
-    private void DirectionUpdateFly()
+    void Start()
     {
-            UpdateTime = NewRandUpdate();
-            if (InAttraction == false)
-            {
-			t = 0;
-			DestinationPos = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
-            } else
-            {
-            }
+        destinations = new Vector3[nbOfPointsinPath];
+        param.Add("name", beeId);
+        param.Add("oncompletetarget", gameObject);
+        param.Add("oncomplete", "UpdatePath");
+        param.Add("path", destinations);
+        param.Add("speed", _speed);
+        param.Add("orienttopath", true);
+
+        param.Add("easetype", iTween.EaseType.linear);
+
+        iTween.MoveTo(gameObject, param);
+
     }
 
-    public void FixedUpdate()
+    public void KillMe()
     {
-            Fly();   
-	}
+        iTween.StopByName(beeId);
+    }
 
-
-    public void Fly()
+    public void UpdatePath()
     {
-        //GLOBAL 
-        t += Time.deltaTime;
+        iTween.StopByName(beeId);
 
-        if (InAttraction == true)
+        for (var i = 0; i < nbOfPointsinPath; i++)
         {
-            t = 0;
-            var preRandom = GameObject.Find("ClimaxFlocking(Clone)").GetComponent<FlockingClimax>().DestinationFlock;
-            var randomFlock = new Vector3(preRandom.x + Random.Range(-2f, 2f), preRandom.y + Random.Range(-2f, 2f), preRandom.z + Random.Range(-2f, 2f));
-            DestinationPos = randomFlock;
-
-            transform.position = randomFlock;
-
-            transform.LookAt(DestinationPos, Vector3.right);
-
+            destinations[i] = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
         }
-        else { 
 
-            if (t >= UpdateTime){
-               DirectionUpdateFly();
-            }   
+        param.Remove("path");
+        param.Add("path", destinations);
 
-        //LERP
-        CurrentPos = transform.position;
+        iTween.MoveTo(gameObject, param);
 
-        var directionVector = Vector3.Slerp(CurrentPos, DestinationPos, t * _speed);
-
-        transform.position = directionVector;
-
-        transform.LookAt(DestinationPos, Vector3.right);
-
-        LifeTimer += Time.deltaTime;
-
-		if (LifeTimer >= (_TimeBeforeDeath - 10))
-		{
-			FallPosition = new Vector3(CurrentPos.x, CurrentPos.y - 2, CurrentPos.z);
-			DestinationPos = FallPosition;
-			Dying = true;
-
-			if (LifeTimer >= _TimeBeforeDeath)
-			{
-				Destroy(gameObject);
-			}
-		}
-        }
     }
 
-    public float NewRandUpdate() {
-	    return Random.Range(0, _MaxRefreshRate);
-	}
-
-    private Vector3 RandomPointInBox(Vector3 center, Vector3 size)
+    public Vector3 RandomPointInBox(Vector3 center, Vector3 size)
     {
-
         return center + new Vector3(
-           ((Random.value - 0.5f) * size.x),
-           (Random.value - 0.5f) * size.y,
-           (Random.value - 0.5f) * size.z
+           ((UnityEngine.Random.value - 0.5f) * size.x),
+           (UnityEngine.Random.value - 0.5f) * size.y,
+           (UnityEngine.Random.value - 0.5f) * size.z
         );
     }
 

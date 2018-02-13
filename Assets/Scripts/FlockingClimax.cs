@@ -35,6 +35,7 @@ public class FlockingClimax : MonoBehaviour {
 				TrailRendererObj.startWidth = startWidth;
                 TrailRendererObj.material = trailMat;
 				TrailRendererObj.time = time;
+            go.GetComponent<FlyingBees>().KillMe();
                 DestroyImmediate(go);
             }
     }
