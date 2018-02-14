@@ -31,7 +31,7 @@ public class PkData : MonoBehaviour {
 			dataArray = content.Split(splitChar);
 			//print (content);
 			SplitToValue (dataArray);
-            wind.UpdateWind(DirectionWind,15f,30f);
+            wind.UpdateWind(DirectionWind, SpeedWind, MaxWindSpeed);
             yield return new WaitForSecondsRealtime (10);
 		}
 

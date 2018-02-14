@@ -48,6 +48,10 @@ public class FlyingBees : MonoBehaviour
         iTween.StopByName(beeId);
     }
 
+    public void Resize(int size)
+    {
+        System.Array.Resize(ref destinations, size);
+    }
     public void UpdatePath()
     {
         iTween.StopByName(beeId);

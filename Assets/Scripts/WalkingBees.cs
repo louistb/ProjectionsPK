@@ -33,7 +33,6 @@ public class WalkingBees : MonoBehaviour {
     void Start()
     {
         UpdateTime = NewRandUpdate();
-        var RendererWall = SelectedWall.GetComponent<Renderer>();
         centerPoint = Random.Range(-1.4f, 1.4f);
         DirectionUpdate();
     }

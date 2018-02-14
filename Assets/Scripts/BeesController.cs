@@ -82,6 +82,7 @@ public class BeesController : MonoBehaviour {
             {
                 var selectedWall = Walls[Random.Range(0, Walls.Length)];
                 GameObject NewBee = Instantiate(WalkingBees, Spawn.transform.position, newRotation, transform) as GameObject;
+                print(selectedWall);
                 NewBee.GetComponent<WalkingBees>().SelectedWall = selectedWall;
                 NewBee.GetComponent<WalkingBees>().DeathPoint = Spawn.transform.position;
                 NewBee.tag = "bee";
