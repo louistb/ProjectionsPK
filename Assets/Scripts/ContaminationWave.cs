@@ -22,9 +22,7 @@ public class ContaminationWave : MonoBehaviour {
             }
             else {
 
-                var touchedFly = touched.GetComponent<FlyingBees>();
-                touchedFly.Dying = true;
-                touchedFly.LifeTimer = touchedFly._TimeBeforeDeath - 10;
+                touched.GetComponent<FlyingBees>().KillMe(20f);
             }
         }
     }

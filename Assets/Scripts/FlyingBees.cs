@@ -23,8 +23,6 @@ public class FlyingBees : MonoBehaviour
         _speed = Controller.speed;
         _FlyZone = Controller.FlyZone;
         beeId = "bee" + UnityEngine.Random.Range(0, 20000).ToString() + UnityEngine.Random.Range(0, 20000).ToString();
-
-
     }
 
     void Start()
@@ -43,14 +41,29 @@ public class FlyingBees : MonoBehaviour
 
     }
 
-    public void KillMe()
+    public void KillMe(float killTime)
     {
         iTween.StopByName(beeId);
+        var currentPos = transform.position;
+        iTween.MoveTo(gameObject,new Vector3(currentPos.x,currentPos.y - 10,currentPos.z), killTime);
+        StartCoroutine(KillAfterDelay(killTime));
     }
 
+    public IEnumerator KillAfterDelay(float killbefore)
+    {
+        yield return new WaitForSecondsRealtime(killbefore);
+        iTween.Stop();
+        yield return new WaitForSecondsRealtime(2f);
+        Destroy(gameObject);
+    }
     public void Resize(int size)
     {
         System.Array.Resize(ref destinations, size);
+    }
+
+    public void KillMeClimax()
+    {
+        iTween.StopByName(beeId);
     }
     public void UpdatePath()
     {

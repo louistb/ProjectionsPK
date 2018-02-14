@@ -25,7 +25,7 @@ public class FlockingClimax : MonoBehaviour {
             {
                 GameObject newObject = GameObject.Instantiate(FlyingPrefab) as GameObject;
                 newObject.GetComponent<FlyingBees>().Resize(1);
-                newObject.GetComponent<FlyingBees>()._speed = 4f;
+                newObject.GetComponent<FlyingBees>()._speed = 5f;
                 newObject.transform.parent = go.transform.parent;
                 newObject.transform.localPosition = go.transform.localPosition;
                 newObject.transform.localRotation = go.transform.localRotation;
@@ -37,7 +37,7 @@ public class FlockingClimax : MonoBehaviour {
 				TrailRendererObj.startWidth = startWidth;
                 TrailRendererObj.material = trailMat;
 				TrailRendererObj.time = time;
-                go.GetComponent<FlyingBees>().KillMe();
+                go.GetComponent<FlyingBees>().KillMeClimax();
                 DestroyImmediate(go);
             }
     }
