@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class UiController : MonoBehaviour {
 
 	public Text FPS, WindDirection,WindSpeed,CurrentTemp, LastClimax, LastWave,stepsIn10,reservoire;
@@ -25,5 +25,16 @@ public class UiController : MonoBehaviour {
 	}
 	public void Quit() {
 		Application.Quit();
+	}
+
+	public void Reload() {
+		var allBees = GameObject.FindGameObjectsWithTag ("bee");
+
+		foreach (var bee in allBees) {
+			if (bee.GetComponent<FlyingBees> () != null);
+				bee.GetComponent<FlyingBees>().KillMeClimax();
+		}
+
+		SceneManager.LoadSceneAsync("Main");
 	}
 }
