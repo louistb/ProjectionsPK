@@ -5260,6 +5260,71 @@ Prefab:
       propertyPath: InitialModule.startLifetime.scalar
       value: 15.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 96612627325390886, guid: 82b0f24c36cff844ebed499207c41e7a, type: 2}
     - {fileID: 33605307037597564, guid: 82b0f24c36cff844ebed499207c41e7a, type: 2}
@@ -8562,6 +8627,71 @@ Prefab:
       propertyPath: InitialModule.startLifetime.scalar
       value: 20.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 96612627325390886, guid: 82b0f24c36cff844ebed499207c41e7a, type: 2}
     - {fileID: 33605307037597564, guid: 82b0f24c36cff844ebed499207c41e7a, type: 2}
@@ -10140,7 +10270,7 @@ MonoBehaviour:
   FlyZone: {fileID: 802916395}
   MaxRefreshRateWalk: 0.3
   TimeBeforeDeathWalk: 45
-  speedWalk: 0.005
+  speedWalk: 0.24
 --- !u!4 &1036761295
 Transform:
   m_ObjectHideFlags: 0

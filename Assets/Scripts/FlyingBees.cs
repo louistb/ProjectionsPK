@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
 
 public class FlyingBees : MonoBehaviour
 {
@@ -19,15 +19,17 @@ public class FlyingBees : MonoBehaviour
 
     void Awake() {
         Controller = GameObject.Find("Bees_System").GetComponent<BeesController>();
-        _TimeBeforeDeath = Controller.TimeBeforeDeath - Controller.TimeBeforeDeath / Random.Range(0, Controller.TimeBeforeDeath / 3);
+        _TimeBeforeDeath = Controller.TimeBeforeDeath - Controller.TimeBeforeDeath / UnityEngine.Random.Range(0, Controller.TimeBeforeDeath / 3);
         _speed = Controller.speed;
         _FlyZone = Controller.FlyZone;
-        beeId = "bee" + UnityEngine.Random.Range(0, 20000).ToString() + UnityEngine.Random.Range(0, 20000).ToString();
+        beeId = Guid.NewGuid().ToString();
     }
 
     void Start()
     {
         destinations = new Vector3[nbOfPointsinPath];
+        UpdatePathInPoints();
+
         param.Add("name", beeId);
         param.Add("oncompletetarget", gameObject);
         param.Add("oncomplete", "UpdatePath");
@@ -69,15 +71,21 @@ public class FlyingBees : MonoBehaviour
     {
         iTween.StopByName(beeId);
 
-        for (var i = 0; i < nbOfPointsinPath; i++)
-        {
-            destinations[i] = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
-        }
+        UpdatePathInPoints();
 
         param.Remove("path");
         param.Add("path", destinations);
 
         iTween.MoveTo(gameObject, param);
+
+    }
+
+    public void UpdatePathInPoints()
+    {
+        for (var i = 0; i < nbOfPointsinPath; i++)
+        {
+            destinations[i] = RandomPointInBox(_FlyZone.bounds.center, _FlyZone.bounds.size);
+        }
 
     }
 
