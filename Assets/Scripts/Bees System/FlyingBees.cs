@@ -58,19 +58,6 @@ public class FlyingBees : MonoBehaviour
         yield return new WaitForSecondsRealtime(2f);
         Destroy(gameObject);
     }
-    //public void Resize(int size)
-    //{
-    //    System.Array.Resize(ref destinations, size + 1);
-
-    //    iTween.StopByName(beeId);
-
-    //    param.Remove("path");
-    //    UpdatePathInPoints();
-    //    param.Add("path", destinations);
-
-    //    iTween.MoveTo(gameObject, param);
-
-    //}
 
     public void KillMeClimax()
     {

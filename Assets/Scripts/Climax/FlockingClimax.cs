@@ -19,7 +19,6 @@ public class FlockingClimax : MonoBehaviour {
 
     void AllToFly()
     {
-        FlyZone.GetComponent<Animator>().SetBool("Toflock",true);
         var intheScene = GameObject.FindGameObjectsWithTag("bee");
             foreach (GameObject go in intheScene)
             {
