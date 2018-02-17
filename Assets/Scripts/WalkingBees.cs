@@ -32,14 +32,14 @@ public class WalkingBees : MonoBehaviour {
 
         destinations = new Vector3[nbOfPointsinPath];
         UpdatePathItems();
+
         param.Add("name", beeId);
         param.Add("oncompletetarget", gameObject);
         param.Add("oncomplete", "UpdatePath");
         param.Add("path", destinations);
         param.Add("speed", _speed);
         param.Add("orienttopath", true);
-        param.Add("axis", "z");
-
+        param.Add("movetopath", true);
         param.Add("easetype", iTween.EaseType.linear);
 
         iTween.MoveTo(gameObject, param);
@@ -78,9 +78,9 @@ public class WalkingBees : MonoBehaviour {
     public Vector3 RandomPointInBox(Vector3 center, Vector3 size)
     {
         return center + new Vector3(
-           ((UnityEngine.Random.value - 0.5f) * size.x),
-           (UnityEngine.Random.value - 0.5f) * size.y,
-           (UnityEngine.Random.value - 0.5f) * size.z
+           ((UnityEngine.Random.value - 0.5f) * size.x / 3),
+           (UnityEngine.Random.value - 0.5f) * size.y / 3,
+           (UnityEngine.Random.value - 0.5f) * size.z / 3
         );
     }
 

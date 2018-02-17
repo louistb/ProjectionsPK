@@ -31,9 +31,15 @@ public class UiController : MonoBehaviour {
 		var allBees = GameObject.FindGameObjectsWithTag ("bee");
 
 		foreach (var bee in allBees) {
-			if (bee.GetComponent<FlyingBees> () != null);
-				bee.GetComponent<FlyingBees>().KillMeClimax();
-		}
+
+            if (bee.GetComponent<WalkingBees>() != null)
+                bee.GetComponent<WalkingBees>().KillMeClimax();
+
+            if (bee.GetComponent<FlyingBees>() != null)
+                bee.GetComponent<FlyingBees>().KillMeClimax();
+
+            Destroy(bee);
+        }
 
 		SceneManager.LoadSceneAsync("Main");
 	}

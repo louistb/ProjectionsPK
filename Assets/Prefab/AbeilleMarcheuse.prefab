@@ -86,8 +86,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1116802107822414}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.67155814, y: -0.7907813, z: -2.3098152}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -4.019718, y: 0.40887785, z: -2.3098152}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4450223215463136}
@@ -95,7 +95,7 @@ Transform:
   - {fileID: 4824170467485106}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4450223215463136
 Transform:
   m_ObjectHideFlags: 1
@@ -300,10 +300,9 @@ MonoBehaviour:
   t: 0
   UpdateTime: 0
   centerPoint: 0
-  CurrentPos: {x: 0, y: 0, z: 0}
-  DestinationPos: {x: 0, y: 0, z: 0}
-  AtractPos: {x: 0, y: 0, z: 0}
-  DeathPoint: {x: 0, y: 0, z: 0}
+  beeId: 
+  destinations: []
+  nbOfPointsinPath: 12
   InAttraction: 0
   Flying: 0
   Dying: 0
