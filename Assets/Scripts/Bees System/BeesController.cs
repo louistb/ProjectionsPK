@@ -9,15 +9,18 @@ public class BeesController : MonoBehaviour {
     [Header("Prefabs")]
     public GameObject FlyingBees;
     public GameObject WalkingBees;
+    public GameObject FlyingBlue;
 
     [Header("Inital Settings")]
     public int NbOfBees;
     public int FlyingPourcentage;
     public bool auto;
 
-    [Header("Burst Settings")]
-    public int NbOfBeesBurst;
-    public int FlyingPourcentageBurst;
+    [Header("Burst Walk")]
+    public int NbOfBeesBurstWalk;
+
+    [Header("Burst Fly")]
+    public int NbOfBeesBurstFly;
 
     [Header("Flying")]
     public float MaxRefreshRate;
@@ -54,9 +57,14 @@ public class BeesController : MonoBehaviour {
             Init();
 		}
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            burst();
+            burst("Walking");
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            burst("FlyingBlue");
         }
 
         if (Input.GetKeyDown (KeyCode.D)) {
@@ -97,26 +105,43 @@ public class BeesController : MonoBehaviour {
 		}
 	}
 
-    public void burst()
+    public void burst(string type)
     {
-        for (var i = 1; i <= NbOfBeesBurst; i++)
+
+        var arraySelected = 0;
+        var selectedObj = new GameObject();
+
+        if (type == "Walking") {
+            arraySelected = NbOfBeesBurstWalk;
+            selectedObj = WalkingBees;
+        }
+
+        if (type == "FlyingBlue") {
+            arraySelected = NbOfBeesBurstFly;
+            selectedObj = FlyingBlue;
+        }
+
+        if (type == "Flying") {
+            arraySelected = NbOfBeesBurstFly;
+            selectedObj = WalkingBees;
+        }
+
+        for (var i = 1; i <= arraySelected; i++)
         {
-            var RandomRate = Random.Range(0, 100);
             var newRotation = Quaternion.Euler(-90f, 0f, 0f);
             var Spawn = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
 
-            if (RandomRate < FlyingPourcentageBurst)
-            {
-                GameObject NewBee = Instantiate(FlyingBees, Spawn.transform.position, newRotation, transform) as GameObject;
-                NewBee.tag = "bee";
-            }
-            else
+            GameObject NewBee = Instantiate(selectedObj, Spawn.transform.position, newRotation, transform) as GameObject;
+
+            if (type == "Walking")
             {
                 var selectedWall = Walls[Random.Range(0, Walls.Length)];
-                GameObject NewBee = Instantiate(WalkingBees, Spawn.transform.position, newRotation, transform) as GameObject;
                 NewBee.GetComponent<WalkingBees>().SelectedWall = selectedWall;
-                NewBee.tag = "bee";
+
             }
+
+            NewBee.tag = "bee";
+            
         }
     }
 

@@ -24,7 +24,7 @@ public class DataPropolisEngine : MonoBehaviour {
     void OnReceiveHex(OscMessage message) {
         float state = message.GetFloat(0);
         if (state == 1)
-            Bees.burst();
+            Bees.burst("Walking");
 			Count10Sec++;
     }
 
