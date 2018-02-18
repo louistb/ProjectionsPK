@@ -12,6 +12,7 @@ public class ClimaxController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.C))
         {
+            director.Stop();
             director.Play();
         }
 

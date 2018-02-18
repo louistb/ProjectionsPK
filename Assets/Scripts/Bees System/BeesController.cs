@@ -109,7 +109,7 @@ public class BeesController : MonoBehaviour {
     {
 
         var arraySelected = 0;
-        var selectedObj = new GameObject();
+        var selectedObj = new Object();
 
         if (type == "Walking") {
             arraySelected = NbOfBeesBurstWalk;
@@ -136,8 +136,7 @@ public class BeesController : MonoBehaviour {
             if (type == "Walking")
             {
                 var selectedWall = Walls[Random.Range(0, Walls.Length)];
-                NewBee.GetComponent<WalkingBees>().SelectedWall = selectedWall;
-
+                NewBee.GetComponentInChildren<WalkingBees>().SelectedWall = selectedWall;
             }
 
             NewBee.tag = "bee";

@@ -6,7 +6,7 @@ public class PistonClimax : MonoBehaviour {
 
 	Animator PistonAnimator;
 	// Use this for initialization
-	void Start () {
+	void OnEnable() {
 		PistonAnimator = GetComponent<Animator> ();
 	}
 

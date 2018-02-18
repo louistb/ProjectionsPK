@@ -12,7 +12,7 @@ public class FlockingClimax : MonoBehaviour {
 	public float startWidth, endWidth,time;
 
     // Use this for initialization
-    void Start() {
+    void OnEnable() {
         FlyZone = GameObject.Find("Fly_Zone");
         AllToFly();
     }

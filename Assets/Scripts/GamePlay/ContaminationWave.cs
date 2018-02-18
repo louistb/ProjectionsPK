@@ -7,6 +7,7 @@ public class ContaminationWave : MonoBehaviour {
     public Animator ContaminationAnimator;
     public GameObject ParticalComtamination;
     public float Duration;
+    public BeesController Controller;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -15,10 +16,7 @@ public class ContaminationWave : MonoBehaviour {
         {
             if (touched.GetComponent<WalkingBees>() != null)
             {
-                var touchedWalk = touched.GetComponent<WalkingBees>();
-
-                touchedWalk.Dying = true;
-                touchedWalk.LifeTimer = touchedWalk._TimeBeforeDeath - 10;
+                touched.GetComponent<WalkingBees>().KillMe(20f);
             }
             else {
 
@@ -56,6 +54,7 @@ public class ContaminationWave : MonoBehaviour {
     public IEnumerator KillAfterWave(GameObject toKill,float delay)
     {
         yield  return new WaitForSeconds(delay + 5f);
+        Controller.Init();
         Destroy(toKill);
     }
 

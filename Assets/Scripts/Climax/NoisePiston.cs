@@ -6,7 +6,7 @@ public class NoisePiston : MonoBehaviour
 {
     Vector3 startPos;
 
-    private float amplitude = 0.04f;
+    private float amplitude = 0.06f;
     private float period;
     private bool NoiseMove;
 	private Vector3 NoiseVector;

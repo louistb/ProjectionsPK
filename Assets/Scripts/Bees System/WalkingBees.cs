@@ -39,7 +39,6 @@ public class WalkingBees : MonoBehaviour {
         param.Add("path", destinations);
         param.Add("speed", _speed);
         param.Add("orienttopath", true);
-        param.Add("movetopath", true);
         param.Add("easetype", iTween.EaseType.linear);
 
         iTween.MoveTo(gameObject, param);
@@ -57,6 +56,21 @@ public class WalkingBees : MonoBehaviour {
         iTween.MoveTo(gameObject, param);
 
     }
+    public void KillMe(float killTime)
+    {
+        iTween.StopByName(beeId);
+        var currentPos = transform.position;
+        iTween.MoveTo(gameObject, new Vector3(currentPos.x, currentPos.y - 10, currentPos.z), killTime);
+        StartCoroutine(KillAfterDelay(killTime));
+    }
+
+    public IEnumerator KillAfterDelay(float killbefore)
+    {
+        yield return new WaitForSecondsRealtime(killbefore);
+        iTween.Stop();
+        yield return new WaitForSecondsRealtime(2f);
+        Destroy(gameObject);
+    }
 
     public void UpdatePathItems()
     {
@@ -68,12 +82,12 @@ public class WalkingBees : MonoBehaviour {
         }
 
     }
+
     public void KillMeClimax()
     {
         iTween.StopByName(beeId);
         Destroy(gameObject);
     }
-
 
     public Vector3 RandomPointInBox(Vector3 center, Vector3 size)
     {

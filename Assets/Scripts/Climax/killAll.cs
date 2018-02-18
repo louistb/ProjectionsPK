@@ -5,7 +5,7 @@ using UnityEngine;
 public class killAll : MonoBehaviour {
     private GameObject[] intheScene;
 
-    void Start () {
+    void OnEnable() {
         intheScene = GameObject.FindGameObjectsWithTag("bee");
 
         foreach (var bees in intheScene)
