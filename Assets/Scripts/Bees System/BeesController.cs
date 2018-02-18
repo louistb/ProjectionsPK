@@ -14,7 +14,6 @@ public class BeesController : MonoBehaviour {
     [Header("Inital Settings")]
     public int NbOfBees;
     public int FlyingPourcentage;
-    public bool auto;
 
     [Header("Burst Walk")]
     public int NbOfBeesBurstWalk;
@@ -33,6 +32,11 @@ public class BeesController : MonoBehaviour {
     public float TimeBeforeDeathWalk;
     public float speedWalk;
   
+	[Header("Auto Balance Flying and Walking")]
+	public int MaxFlying; 
+	public int MaxWakling;
+	public int TimeTocheck;
+
     //PRIVATE 
     private GameObject[] intheScene;
     private GameObject[] Walls;
@@ -40,21 +44,16 @@ public class BeesController : MonoBehaviour {
 
     private void Start()
     {
-        if(auto == true)
-        {
-            InvokeRepeating("NewBees", 0f, TimeBeforeDeathWalk);
-        }
-
         Walls = GameObject.FindGameObjectsWithTag("ZoneWalk");
         SpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-
+		InvokeRepeating ("CheckBees()", 0f, TimeTocheck);
         Init();
     }
 
     void Update () {
 		
 		if(Input.GetKeyDown(KeyCode.I)) {
-            Init();
+			Init();
 		}
 
         if (Input.GetKeyDown(KeyCode.Y))
@@ -83,14 +82,35 @@ public class BeesController : MonoBehaviour {
 		}
 	}
 
+	public void CheckBees() {
+		
+		var allBees = GameObject.FindGameObjectsWithTag("bee"); 
+		var countWalk = 0;
+		var countFlyng = 0;
 
-	public void Init() {
-        for (var i = 1; i <= NbOfBees; i++) {
+		foreach (var bee in allBees) {
+			if (bee.GetComponent<WalkingBees> () != null)
+				countWalk ++;
+			if (bee.GetComponent<FlyingBees> () != null)
+				countWalk ++;
+		}
+			
+		if (countFlyng < MaxFlying)
+			InternalInit (MaxWakling - countFlyng, 100);
+
+	}
+
+	public void Init()  {
+		InternalInit (NbOfBees, FlyingPourcentage);
+	}
+
+	public void InternalInit(int Nb,int Pourc) {
+		for (var i = 1; i <= Nb; i++) {
             var RandomRate = Random.Range(0, 100);
             var newRotation = Quaternion.Euler(-90f, 0f, 0f);
             var Spawn = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
 
-            if (RandomRate < FlyingPourcentage)
+			if (RandomRate < Pourc)
             {
                 GameObject NewBee = Instantiate(FlyingBees, Spawn.transform.position, newRotation, transform) as GameObject;
                 NewBee.tag = "bee";
@@ -116,7 +136,7 @@ public class BeesController : MonoBehaviour {
             selectedObj = WalkingBees;
         }
 
-        if (type == "FlyingBlue") {
+		if (type == "FlyingBlue") {
             arraySelected = NbOfBeesBurstFly;
             selectedObj = FlyingBlue;
         }

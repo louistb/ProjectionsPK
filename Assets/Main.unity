@@ -1283,11 +1283,13 @@ MonoBehaviour:
   BatteryLevel: 0
   Count10Sec: 0
   Last10: 0
+  ActivatedShield: 0
   Wave: 0
-  Climax: 0
   Bees: {fileID: 1036761294}
   lastClimax: 0
   lastWave: 0
+  WaveController: {fileID: 1981270268}
+  ClimaxController: {fileID: 22361013}
 --- !u!114 &243430517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5724,6 +5726,196 @@ Prefab:
       propertyPath: InitialModule.startLifetime.scalar
       value: 15.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 96612627325390886, guid: 82b0f24c36cff844ebed499207c41e7a, type: 2}
     - {fileID: 33605307037597564, guid: 82b0f24c36cff844ebed499207c41e7a, type: 2}
@@ -9517,6 +9709,196 @@ Prefab:
       propertyPath: InitialModule.startLifetime.scalar
       value: 20.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198179226881558354, guid: 82b0f24c36cff844ebed499207c41e7a,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 96612627325390886, guid: 82b0f24c36cff844ebed499207c41e7a, type: 2}
     - {fileID: 33605307037597564, guid: 82b0f24c36cff844ebed499207c41e7a, type: 2}
@@ -11127,7 +11509,6 @@ MonoBehaviour:
   FlyingBlue: {fileID: 1406261212343002, guid: 57b9ba5aa56646649aca9ab93aa0d073, type: 2}
   NbOfBees: 70
   FlyingPourcentage: 100
-  auto: 0
   NbOfBeesBurstWalk: 2
   NbOfBeesBurstFly: 2
   MaxRefreshRate: 3
@@ -11137,6 +11518,9 @@ MonoBehaviour:
   MaxRefreshRateWalk: 0.3
   TimeBeforeDeathWalk: 45
   speedWalk: 0.24
+  MaxFlying: 0
+  MaxWakling: 0
+  TimeTocheck: 0
 --- !u!4 &1036761295
 Transform:
   m_ObjectHideFlags: 0
@@ -14483,8 +14867,9 @@ MonoBehaviour:
   ContaminationAnimator: {fileID: 1981270274}
   ParticalComtamination: {fileID: 1979564014352174, guid: 93c5b4175a924e14a9d5eb34c8d9114c,
     type: 2}
-  Duration: 10
+  Duration: 25
   Controller: {fileID: 1036761294}
+  dataEngine: {fileID: 243430516}
 --- !u!54 &1981270269
 Rigidbody:
   m_ObjectHideFlags: 0

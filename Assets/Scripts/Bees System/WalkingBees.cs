@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-
+using UnityEngine.UI;
 
 public class WalkingBees : MonoBehaviour {
 
@@ -43,6 +43,12 @@ public class WalkingBees : MonoBehaviour {
 
         iTween.MoveTo(gameObject, param);
     }
+
+
+//	public void FixedUpdate()  {
+//		var currentRotation = gameObject.transform.rotation;
+//		transform.Rotate(new Vector3(currentRotation.x,currentRotation.y,-90f));
+//	}
 
     public void UpdatePath() {
 

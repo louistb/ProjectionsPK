@@ -8,32 +8,48 @@ public class ContaminationWave : MonoBehaviour {
     public GameObject ParticalComtamination;
     public float Duration;
     public BeesController Controller;
+	public DataPropolisEngine dataEngine;
+	private int ProtectedShields;
 
     void OnCollisionEnter(Collision collision)
     {
-        var touched = collision.transform.gameObject;
-        if (touched.tag == "bee")
-        {
-            if (touched.GetComponent<WalkingBees>() != null)
-            {
-                touched.GetComponent<WalkingBees>().KillMe(20f);
-            }
-            else {
+		ProtectedShields = dataEngine.ActivatedShield;
 
-                touched.GetComponent<FlyingBees>().KillMe(20f);
-            }
-        }
+		var chancesToKill = ProtectedShields * (3 / 100);
+
+		var random100 = UnityEngine.Random.Range(0, 100);
+
+		if (chancesToKill < random100) {
+	        var touched = collision.transform.gameObject;
+
+	        if (touched.tag == "bee")
+	        {
+	            if (touched.GetComponent<WalkingBees>() != null)
+	            {
+	                touched.GetComponent<WalkingBees>().KillMe(3f);
+	            }
+	            else {
+
+	                touched.GetComponent<FlyingBees>().KillMe(3f);
+	            }
+	        }
+		}
     }
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.W))
         {
-            StartCoroutine("Wave");
+			StartCoroutine("Wave");
         }
     }
 
-    public IEnumerator Wave()
+	public void StartWave() {
+		
+		StartCoroutine("Wave");
+	}
+
+	public IEnumerator Wave()
     {
         var WaveParticle = Instantiate(ParticalComtamination, transform.position,Quaternion.Euler(0f,90f,0f)) as GameObject;
 		WaveParticle.transform.parent = GameObject.Find ("Contamination").transform;
