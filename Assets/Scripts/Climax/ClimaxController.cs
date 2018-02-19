@@ -6,6 +6,7 @@ using UnityEngine.Playables;
 public class ClimaxController : MonoBehaviour {
 
     public PlayableDirector director;
+	public ContaminationWave wave;
 
     // Update is called once per frame
     void Update() {
@@ -13,6 +14,7 @@ public class ClimaxController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.C))
         {
 			StartClimax();
+			wave.KillWave ();
         }
 
     }

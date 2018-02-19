@@ -58,7 +58,7 @@ public class DataPropolisEngine : MonoBehaviour {
 
         float state = message.GetFloat(0);
 
-		if (state == 1 && oneTimeWave == false) {
+		if (state == 1 && !oneTimeWave) {
 			oneTimeWave = true;
 			print ("Wave");
 			WaveController.StartWave();
@@ -74,9 +74,9 @@ public class DataPropolisEngine : MonoBehaviour {
 
 		float state = message.GetInt(0);
 
-		if (state == 1 && oneTimeClimax == false) {
+		if (state == 1 && !oneTimeClimax) {
 			oneTimeClimax = true;
-			print ("climax");
+			WaveController.KillWave();
 			ClimaxController.StartClimax();
 		}
 

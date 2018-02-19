@@ -10,6 +10,8 @@ public class ContaminationWave : MonoBehaviour {
     public BeesController Controller;
 	public DataPropolisEngine dataEngine;
 	private int ProtectedShields;
+	private Coroutine waveCoroutine;
+	private GameObject ParticleSystem;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -40,29 +42,33 @@ public class ContaminationWave : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.W))
         {
-			StartCoroutine("Wave");
+			StartWave();
         }
     }
 
 	public void StartWave() {
 		
-		StartCoroutine("Wave");
+		if (waveCoroutine != null)
+			StopCoroutine(waveCoroutine);
+		
+		waveCoroutine = StartCoroutine("Wave");
 	}
 
 	public IEnumerator Wave()
     {
-        var WaveParticle = Instantiate(ParticalComtamination, transform.position,Quaternion.Euler(0f,90f,0f)) as GameObject;
-		WaveParticle.transform.parent = GameObject.Find ("Contamination").transform;
+		ParticleSystem = Instantiate(ParticalComtamination, transform.position,Quaternion.Euler(0f,90f,0f)) as GameObject;
+		ParticleSystem.transform.parent = GameObject.Find ("Contamination").transform;
 
-        var System = WaveParticle.GetComponent<ParticleSystem>();
+		var System = ParticleSystem.GetComponent<ParticleSystem>();
         var ps = System.main;
 
         System.Stop();
         ps.duration = Duration;
         System.Play();
             
-        StartCoroutine(KillAfterWave(WaveParticle, Duration));
-        ContaminationAnimator.SetBool("Infection", true);
+		StartCoroutine(KillAfterWave(ParticleSystem, Duration));
+        
+		ContaminationAnimator.SetBool("Infection", true);
         yield return new WaitForSeconds(1f);
         ContaminationAnimator.SetBool("Infection", false);
     }
@@ -74,4 +80,11 @@ public class ContaminationWave : MonoBehaviour {
         Destroy(toKill);
     }
 
+	public void KillWave() {
+		if (waveCoroutine != null)
+			StopCoroutine(waveCoroutine);
+			ContaminationAnimator.Play("hiden");
+			Destroy(ParticleSystem);
+		
+	}
 }

@@ -46,7 +46,7 @@ public class FlyingBees : MonoBehaviour
     {
         iTween.StopByName(beeId);
         var currentPos = transform.position;
-        iTween.MoveTo(gameObject,new Vector3(currentPos.x,currentPos.y - 20,currentPos.z), killTime);
+        iTween.MoveTo(gameObject,new Vector3(currentPos.x,-20f,currentPos.z), killTime);
         StartCoroutine(KillAfterDelay(killTime));
     }
 
