@@ -39,12 +39,17 @@ public class PkData : MonoBehaviour {
 	}
 		
 	public void SplitToValue(String[] DataArray) {
-		MaxWindSpeed = float.Parse(DataArray[32]);
-		SpeedWind = float.Parse(DataArray[5]);
-		DirectionWind = DataArray[11];
-        CurrentTemperature = float.Parse(DataArray[2]);
-        CurrentHumidity = float.Parse(DataArray[3]);
-
+        try {
+            MaxWindSpeed = float.Parse(DataArray[32]);
+            SpeedWind = float.Parse(DataArray[5]);
+            DirectionWind = DataArray[11];
+            CurrentTemperature = float.Parse(DataArray[2]);
+            CurrentHumidity = float.Parse(DataArray[3]);
+        }
+        catch (Exception)
+        {
+            
+        }
     }
 
 }

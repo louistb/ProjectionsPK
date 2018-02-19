@@ -12,38 +12,66 @@ public class ContaminationWave : MonoBehaviour {
 	private int ProtectedShields;
 	private Coroutine waveCoroutine;
 	private GameObject ParticleSystem;
+    private string currentId;
+    private List<string> listTouched;
+
+    private void Start()
+    {
+        listTouched = new List<string>();
+    }
 
     void OnCollisionEnter(Collision collision)
     {
-		ProtectedShields = dataEngine.ActivatedShield;
+        var touched = collision.transform.gameObject;
 
-		var chancesToKill = ProtectedShields * (30 / 3);
-		var lerp = ProtectedShields * (1 / 3);
+        currentId = "";
 
-		var revesedChance = Mathf.Lerp(30f,0f,lerp);
+        //ProtectedShields = dataEngine.ActivatedShield;
+        ProtectedShields = 0;
 
-		var random100 = UnityEngine.Random.Range(0, 100);
+        if (touched.GetComponent<WalkingBees>() != null)
+        {
+            currentId = touched.GetComponent<WalkingBees>().beeId;
 
-		print (random100);
+        } else if (touched.GetComponent<FlyingBees>() != null)
+        {
+            currentId = touched.GetComponent<FlyingBees>().beeId;
+        }
 
-		print (revesedChance);
 
-		if (revesedChance > random100) {
-				print ("touched");
-		        var touched = collision.transform.gameObject;
+        if (currentId != ""){
 
-		        if (touched.tag == "bee")
-		        {
-		            if (touched.GetComponent<WalkingBees>() != null)
-		            {
-		                touched.GetComponent<WalkingBees>().KillMe(3f);
-		            }
-		            else {
+            var lerp = (ProtectedShields * 1 )/ 3;
 
-		                touched.GetComponent<FlyingBees>().KillMe(3f);
-		            }
-		        }
-		}
+            var revesedChance = Mathf.Lerp(10f, 0f, lerp);
+
+            var random100 = UnityEngine.Random.Range(0, 100);  
+                
+                if (listTouched.Contains(currentId) == false) {
+                    if (random100 <= revesedChance) {
+                            if (touched.tag == "bee") { 
+                            print("kiiling" + touched.gameObject);
+                            print(touched.GetComponent<WalkingBees>());
+                            print(touched.GetComponent<FlyingBees>());
+
+                            if (touched.gameObject.GetComponent<WalkingBees>() != null)
+                            {
+                                touched.GetComponent<WalkingBees>().KillMe(3f);
+                                listTouched.Add(touched.GetComponent<WalkingBees>().beeId);
+
+                            }
+
+
+                        if (touched.gameObject.GetComponent<FlyingBees>() != null)
+                            { 
+                                touched.GetComponent<FlyingBees>().KillMe(3f);
+                                listTouched.Add(touched.GetComponent<FlyingBees>().beeId);
+                        }
+
+                        }
+                    }
+                }
+        }
     }
 
     void Update()
@@ -55,8 +83,10 @@ public class ContaminationWave : MonoBehaviour {
     }
 
 	public void StartWave() {
-		
-		if (waveCoroutine != null)
+
+        listTouched.Clear();
+
+        if (waveCoroutine != null)
 			StopCoroutine(waveCoroutine);
 		
 		waveCoroutine = StartCoroutine("Wave");

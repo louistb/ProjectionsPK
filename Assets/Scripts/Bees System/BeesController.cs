@@ -101,8 +101,16 @@ public class BeesController : MonoBehaviour {
 
 	}
 
-	public void Init()  {
-		InternalInit (NbOfBees, FlyingPourcentage);
+    public void Init() {
+
+        var toAdd = 0;
+        var allbees = GameObject.FindGameObjectsWithTag("bee");
+
+        foreach (var bees in allbees)
+            if (bees.GetComponent<FlyingBees>() != null) { toAdd++ ; }
+
+
+		InternalInit (NbOfBees - toAdd, FlyingPourcentage);
 	}
 
 	public void InternalInit(int Nb,int Pourc) {

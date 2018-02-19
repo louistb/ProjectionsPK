@@ -12,7 +12,7 @@ public class FlyingBees : MonoBehaviour
     public BeesController Controller;
     public float LifeTimer;
     public bool InAttraction, Dying;
-    private string beeId;
+    public string beeId;
     private float time;
 
     private Hashtable param = new Hashtable();
