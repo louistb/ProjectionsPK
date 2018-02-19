@@ -119,7 +119,6 @@ public class BeesController : MonoBehaviour {
 				var bee = allBees[i];	
 				if (bee.GetComponent<iTween>() != null) {
 					if (bee.GetComponent<FlyingBees>() != null) {
-							print ("killing");
 							bee.GetComponent<FlyingBees>().KillMe(3f);
 						}
 					}

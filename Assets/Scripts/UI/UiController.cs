@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class UiController : MonoBehaviour {
 
-	public Text FPS, WindDirection,WindSpeed,CurrentTemp, LastClimax, LastWave,stepsIn10,reservoire;
+	public Text FPS, WindDirection,WindSpeed,CurrentTemp, LastClimax, LastWave,stepsIn10,reservoire,nbofWalkingBees,nbofFlyingBees;
 	public PkData weatherData;
 	public float lastClimax,lastWave;
 	public DataPropolisEngine engineData;
+	public BeesController beeData;
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,6 +23,8 @@ public class UiController : MonoBehaviour {
 		WindDirection.text = weatherData.DirectionWind;
 		WindSpeed.text = weatherData.SpeedWind.ToString() + " Kmh";
 		CurrentTemp.text = weatherData.CurrentTemperature.ToString() + " C";
+		nbofWalkingBees.text = beeData.countWalk.ToString();
+		nbofFlyingBees.text = beeData.countFly.ToString();
 	}
 	public void Quit() {
 		Application.Quit();
@@ -31,14 +34,15 @@ public class UiController : MonoBehaviour {
 		var allBees = GameObject.FindGameObjectsWithTag ("bee");
 
 		foreach (var bee in allBees) {
+			if (bee.GetComponent<iTween> () != null) {
+	            if (bee.GetComponent<WalkingBees>() != null)
+	                bee.GetComponent<WalkingBees>().KillMeClimax();
 
-            if (bee.GetComponent<WalkingBees>() != null)
-                bee.GetComponent<WalkingBees>().KillMeClimax();
+	            if (bee.GetComponent<FlyingBees>() != null)
+	                bee.GetComponent<FlyingBees>().KillMeClimax();
 
-            if (bee.GetComponent<FlyingBees>() != null)
-                bee.GetComponent<FlyingBees>().KillMeClimax();
-
-            Destroy(bee);
+	            Destroy(bee);
+			}
         }
 
 		SceneManager.LoadSceneAsync("Main");
