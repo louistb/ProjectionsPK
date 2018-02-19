@@ -37,8 +37,7 @@ public class ContaminationWave : MonoBehaviour {
         {
             currentId = touched.GetComponent<FlyingBees>().beeId;
         }
-
-
+			
         if (currentId != ""){
 
             var lerp = (ProtectedShields * 1 )/ 3;
@@ -47,28 +46,25 @@ public class ContaminationWave : MonoBehaviour {
 
             var random100 = UnityEngine.Random.Range(0, 100);  
                 
-                if (listTouched.Contains(currentId) == false) {
+            if (listTouched.Contains(currentId) == false) {
+					
                     if (random100 <= revesedChance) {
-                            if (touched.tag == "bee") { 
-                            print("kiiling" + touched.gameObject);
-                            print(touched.GetComponent<WalkingBees>());
-                            print(touched.GetComponent<FlyingBees>());
+						if (touched.GetComponent<iTween>() != null) {
 
-                            if (touched.gameObject.GetComponent<WalkingBees>() != null)
-                            {
-                                touched.GetComponent<WalkingBees>().KillMe(3f);
-                                listTouched.Add(touched.GetComponent<WalkingBees>().beeId);
-
-                            }
+	                         if (touched.gameObject.GetComponent<WalkingBees>() != null)
+	                            {
+	                                touched.GetComponent<WalkingBees>().KillMe(3f);
+	                                listTouched.Add(touched.GetComponent<WalkingBees>().beeId);
+	                            }
 
 
-                        if (touched.gameObject.GetComponent<FlyingBees>() != null)
-                            { 
-                                touched.GetComponent<FlyingBees>().KillMe(3f);
-                                listTouched.Add(touched.GetComponent<FlyingBees>().beeId);
-                        }
+	                        if (touched.gameObject.GetComponent<FlyingBees>() != null)
+	                            { 
+	                                touched.GetComponent<FlyingBees>().KillMe(3f);
+	                                listTouched.Add(touched.GetComponent<FlyingBees>().beeId);
+	                        	}
 
-                        }
+	                        }
                     }
                 }
         }

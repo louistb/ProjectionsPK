@@ -23,6 +23,7 @@ public class FlyingBees : MonoBehaviour
         _speed = Controller.speed;
         _FlyZone = Controller.FlyZone;
         beeId = Guid.NewGuid().ToString();
+		gameObject.name = beeId;
     }
 
     void Start()
@@ -53,7 +54,7 @@ public class FlyingBees : MonoBehaviour
     public IEnumerator KillAfterDelay(float killbefore)
     {
         yield return new WaitForSecondsRealtime(killbefore);
-        iTween.Stop();
+		iTween.StopByName(beeId);
         yield return new WaitForSecondsRealtime(2f);
         Destroy(gameObject);
     }
@@ -62,8 +63,10 @@ public class FlyingBees : MonoBehaviour
     {
         iTween.StopByName(beeId);
     }
+
     public void UpdatePath()
     {
+
         iTween.StopByName(beeId);
 
         UpdatePathInPoints();

@@ -22,32 +22,35 @@ public class FlockingClimax : MonoBehaviour {
         var intheScene = GameObject.FindGameObjectsWithTag("bee");
             foreach (GameObject go in intheScene)
             {
-                GameObject newObject = GameObject.Instantiate(FlyingPrefab) as GameObject;
+			if (go.GetComponent<iTween> () != null) {
 
-            //newObject.GetComponent<FlyingBees>().Resize(2);
-                newObject.GetComponent<FlyingBees>().nbOfPointsinPath = 2;
-                newObject.GetComponent<FlyingBees>()._speed = 5f;
+	                GameObject newObject = GameObject.Instantiate(FlyingPrefab) as GameObject;
 
-                newObject.transform.parent = go.transform.parent;
-                newObject.transform.localPosition = go.transform.localPosition;
-                newObject.transform.localRotation = go.transform.localRotation;
-                newObject.transform.localScale = go.transform.localScale;
-                newObject.AddComponent<TrailRenderer>();
-                newObject.tag = "bee";
+	            //newObject.GetComponent<FlyingBees>().Resize(2);
+	                newObject.GetComponent<FlyingBees>().nbOfPointsinPath = 2;
+	                newObject.GetComponent<FlyingBees>()._speed = 5f;
 
-            	var TrailRendererObj = newObject.GetComponent<TrailRenderer>();
-				TrailRendererObj.endWidth = endWidth;
-				TrailRendererObj.startWidth = startWidth;
-                TrailRendererObj.material = trailMat;
-				TrailRendererObj.time = time;
+	                newObject.transform.parent = go.transform.parent;
+	                newObject.transform.localPosition = go.transform.localPosition;
+	                newObject.transform.localRotation = go.transform.localRotation;
+	                newObject.transform.localScale = go.transform.localScale;
+	                newObject.AddComponent<TrailRenderer>();
+	                newObject.tag = "bee";
 
-                if (go.GetComponent<WalkingBees>() != null)
-                    go.GetComponent<WalkingBees>().KillMeClimax();
+	            	var TrailRendererObj = newObject.GetComponent<TrailRenderer>();
+					TrailRendererObj.endWidth = endWidth;
+					TrailRendererObj.startWidth = startWidth;
+	                TrailRendererObj.material = trailMat;
+					TrailRendererObj.time = time;
 
-                if (go.GetComponent<FlyingBees>() != null)
-                    go.GetComponent<FlyingBees>().KillMeClimax();
+	                if (go.GetComponent<WalkingBees>() != null)
+	                    go.GetComponent<WalkingBees>().KillMeClimax();
 
-                DestroyImmediate(go);
+	                if (go.GetComponent<FlyingBees>() != null)
+	                    go.GetComponent<FlyingBees>().KillMeClimax();
+
+	                DestroyImmediate(go);
+				}
             }
     }
 	public void Exit() {

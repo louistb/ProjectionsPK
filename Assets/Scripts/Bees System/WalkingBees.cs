@@ -74,7 +74,7 @@ public class WalkingBees : MonoBehaviour {
     public IEnumerator KillAfterDelay(float killbefore)
     {
         yield return new WaitForSecondsRealtime(killbefore);
-        iTween.Stop();
+		iTween.StopByName(beeId);
         yield return new WaitForSecondsRealtime(2f);
         Destroy(gameObject);
     }

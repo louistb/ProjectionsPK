@@ -5,6 +5,10 @@ using UnityEngine;
 public class BeesController : MonoBehaviour {
 
     [Header("Bees System Propolis")]
+	[Header("Current Count")]
+
+	public int countWalk;
+	public int countFly;
 
     [Header("Prefabs")]
     public GameObject FlyingBees;
@@ -46,8 +50,9 @@ public class BeesController : MonoBehaviour {
     {
         Walls = GameObject.FindGameObjectsWithTag("ZoneWalk");
         SpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
 		//ON HOLD FOR NOW
-		//InvokeRepeating ("CheckBees()", 0f, TimeTocheck);
+		InvokeRepeating ("CheckBees", 0f, TimeTocheck);
         Init();
     }
 
@@ -84,20 +89,44 @@ public class BeesController : MonoBehaviour {
 	}
 
 	public void CheckBees() {
-		
+
 		var allBees = GameObject.FindGameObjectsWithTag("bee"); 
-		var countWalk = 0;
-		var countFlyng = 0;
+
+		countWalk = 0;
+		countFly = 0;
 
 		foreach (var bee in allBees) {
-			if (bee.GetComponent<WalkingBees> () != null)
-				countWalk ++;
-			if (bee.GetComponent<FlyingBees> () != null)
-				countWalk ++;
+			
+			if (bee.GetComponent<iTween>() != null) {
+				if (bee.GetComponent<WalkingBees> () != null)
+					countWalk ++;
+				if (bee.GetComponent<FlyingBees> () != null)
+					countFly ++;
+			}
+
 		}
 			
-		if (countFlyng < MaxFlying)
-			InternalInit (MaxWakling - countFlyng, 100);
+	
+		if (countFly < MaxFlying) {
+			Init ();
+		}
+
+		if (countFly > MaxFlying) {
+
+			var toDelete = countFly - MaxFlying;
+			for (var i = 0; i < toDelete; i++) {
+				
+				var bee = allBees[i];	
+				if (bee.GetComponent<iTween>() != null) {
+					if (bee.GetComponent<FlyingBees>() != null) {
+							print ("killing");
+							bee.GetComponent<FlyingBees>().KillMe(3f);
+						}
+					}
+				}
+
+		}
+			
 
 	}
 
