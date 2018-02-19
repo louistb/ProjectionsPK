@@ -17,24 +17,32 @@ public class ContaminationWave : MonoBehaviour {
     {
 		ProtectedShields = dataEngine.ActivatedShield;
 
-		var chancesToKill = ProtectedShields * (3 / 100);
+		var chancesToKill = ProtectedShields * (30 / 3);
+		var lerp = ProtectedShields * (1 / 3);
+
+		var revesedChance = Mathf.Lerp(30f,0f,lerp);
 
 		var random100 = UnityEngine.Random.Range(0, 100);
 
-		if (chancesToKill < random100) {
-	        var touched = collision.transform.gameObject;
+		print (random100);
 
-	        if (touched.tag == "bee")
-	        {
-	            if (touched.GetComponent<WalkingBees>() != null)
-	            {
-	                touched.GetComponent<WalkingBees>().KillMe(3f);
-	            }
-	            else {
+		print (revesedChance);
 
-	                touched.GetComponent<FlyingBees>().KillMe(3f);
-	            }
-	        }
+		if (revesedChance > random100) {
+				print ("touched");
+		        var touched = collision.transform.gameObject;
+
+		        if (touched.tag == "bee")
+		        {
+		            if (touched.GetComponent<WalkingBees>() != null)
+		            {
+		                touched.GetComponent<WalkingBees>().KillMe(3f);
+		            }
+		            else {
+
+		                touched.GetComponent<FlyingBees>().KillMe(3f);
+		            }
+		        }
 		}
     }
 
@@ -75,7 +83,8 @@ public class ContaminationWave : MonoBehaviour {
 
     public IEnumerator KillAfterWave(GameObject toKill,float delay)
     {
-        yield  return new WaitForSeconds(delay + 5f);
+        yield  return new WaitForSeconds(delay);
+		Destroy(ParticleSystem);
         Controller.Init();
         Destroy(toKill);
     }

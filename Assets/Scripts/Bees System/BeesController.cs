@@ -46,7 +46,8 @@ public class BeesController : MonoBehaviour {
     {
         Walls = GameObject.FindGameObjectsWithTag("ZoneWalk");
         SpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-		InvokeRepeating ("CheckBees()", 0f, TimeTocheck);
+		//ON HOLD FOR NOW
+		//InvokeRepeating ("CheckBees()", 0f, TimeTocheck);
         Init();
     }
 

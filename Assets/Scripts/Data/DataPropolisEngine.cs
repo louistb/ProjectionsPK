@@ -11,6 +11,7 @@ public class DataPropolisEngine : MonoBehaviour {
 	public float lastClimax,lastWave;
 	public ContaminationWave WaveController;
 	public ClimaxController ClimaxController;
+	public ReservoirController Reservoir;
 
 	private bool oneTimeWave,oneTimeClimax;
 
@@ -20,6 +21,8 @@ public class DataPropolisEngine : MonoBehaviour {
        osc.SetAddressHandler("/WaveIsActive", OnReceiveWave);
 	   osc.SetAddressHandler("/ShieldsCount", OnReceiveShieldsCount);
 	   osc.SetAddressHandler("/startClimax", OnReceiveClimax);
+	   osc.SetAddressHandler("/reservoir", OnBatteryLevel);
+
 	   StartCoroutine (loop10Sec ());
     }
 
@@ -46,10 +49,11 @@ public class DataPropolisEngine : MonoBehaviour {
 		}
 	}
 
-    void OnBatteryLevel(OscMessage message)
+	void OnBatteryLevel(OscMessage message)
     {
         float baterryLevel = message.GetFloat(0);
         BatteryLevel = baterryLevel;
+		Reservoir.setMaxParticle(baterryLevel);
     }
 
     void OnReceiveWave(OscMessage message)

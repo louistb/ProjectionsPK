@@ -44,12 +44,13 @@ public class WalkingBees : MonoBehaviour {
         iTween.MoveTo(gameObject, param);
     }
 
-
-//	public void FixedUpdate()  {
-//		var currentRotation = gameObject.transform.rotation;
-//		transform.Rotate(new Vector3(currentRotation.x,currentRotation.y,-90f));
-//	}
-
+	public void update() {
+		t += Time.deltaTime;
+		if (t >= _TimeBeforeDeath) {
+			KillMe(3f);
+			t = 0;
+		}
+	}
     public void UpdatePath() {
 
         iTween.StopByName(beeId);
@@ -66,7 +67,7 @@ public class WalkingBees : MonoBehaviour {
     {
         iTween.StopByName(beeId);
         var currentPos = transform.position;
-        iTween.MoveTo(gameObject, new Vector3(currentPos.x, currentPos.y - 10, currentPos.z), killTime);
+		iTween.MoveTo(gameObject,new Vector3(currentPos.x,-4f,currentPos.z), killTime);
         StartCoroutine(KillAfterDelay(killTime));
     }
 
