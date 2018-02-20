@@ -105,24 +105,63 @@ public class BeesController : MonoBehaviour {
 			}
 
 		}
-			
-	
-		if (countFly < MaxFlying) {
-			Init ();
-		}
 
 		if (countFly > MaxFlying) {
 
 			var toDelete = countFly - MaxFlying;
-			for (var i = 0; i < toDelete; i++) {
-				
-				var bee = allBees[i];	
-				if (bee.GetComponent<iTween>() != null) {
-					if (bee.GetComponent<FlyingBees>() != null) {
-							bee.GetComponent<FlyingBees>().KillMe(3f);
-						}
+			var looking = true;
+			var iterationInt = 0;
+			var foundInt = 0;
+
+			while (looking == true) {
+				iterationInt++;
+				if (allBees [iterationInt].GetComponent<FlyingBees> () != null) {
+					if (allBees [iterationInt].GetComponent<iTween> () != null) {
+						foundInt++;
+						allBees [iterationInt].GetComponent<FlyingBees> ().KillMe (3f);
 					}
 				}
+				if (foundInt > toDelete) {
+					looking = false;
+					break;
+
+				}
+			}
+
+//			for (var i = 0; i < toDelete; i++) {
+//				
+//				var bee = allBees[i];	
+//				if (bee.GetComponent<iTween>() != null) {
+//					if (bee.GetComponent<FlyingBees>() != null) {
+//							bee.GetComponent<FlyingBees>().KillMe(3f);
+//						}
+//					}
+//				}
+
+		}
+
+		if (countWalk > MaxWakling) {
+
+			var toDelete = countWalk - MaxWakling;
+			var looking = true;
+			var iterationInt = 0;
+			var foundInt = 0;
+
+			while (looking == true) {
+				iterationInt++;
+				if (allBees [iterationInt].GetComponent<WalkingBees> () != null) {
+					if (allBees [iterationInt].GetComponent<iTween> () != null) {
+						foundInt++;
+						allBees [iterationInt].GetComponent<WalkingBees> ().KillMe (3f);
+					}
+				}
+				if (foundInt > toDelete) {
+					looking = false;
+					break;
+
+				}
+			}
+
 
 		}
 			
