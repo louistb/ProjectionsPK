@@ -118,7 +118,7 @@ public class BeesController : MonoBehaviour {
 				if (allBees [iterationInt].GetComponent<FlyingBees> () != null) {
 					if (allBees [iterationInt].GetComponent<iTween> () != null) {
 						foundInt++;
-						allBees [iterationInt].GetComponent<FlyingBees> ().KillMe (3f);
+						allBees [iterationInt].GetComponent<FlyingBees> ().KillMe (4f);
 					}
 				}
 				if (foundInt > toDelete) {
@@ -128,15 +128,6 @@ public class BeesController : MonoBehaviour {
 				}
 			}
 
-//			for (var i = 0; i < toDelete; i++) {
-//				
-//				var bee = allBees[i];	
-//				if (bee.GetComponent<iTween>() != null) {
-//					if (bee.GetComponent<FlyingBees>() != null) {
-//							bee.GetComponent<FlyingBees>().KillMe(3f);
-//						}
-//					}
-//				}
 
 		}
 
@@ -152,7 +143,7 @@ public class BeesController : MonoBehaviour {
 				if (allBees [iterationInt].GetComponent<WalkingBees> () != null) {
 					if (allBees [iterationInt].GetComponent<iTween> () != null) {
 						foundInt++;
-						allBees [iterationInt].GetComponent<WalkingBees> ().KillMe (3f);
+						allBees [iterationInt].GetComponent<WalkingBees> ().KillMe (4f);
 					}
 				}
 				if (foundInt > toDelete) {

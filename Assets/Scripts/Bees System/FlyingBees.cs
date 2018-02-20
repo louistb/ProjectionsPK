@@ -45,36 +45,43 @@ public class FlyingBees : MonoBehaviour
     }
     public void KillMe(float killTime)
     {
-        iTween.StopByName(beeId);
-        var currentPos = transform.position;
-        iTween.MoveTo(gameObject,new Vector3(currentPos.x,-4f,currentPos.z), killTime);
-        StartCoroutine(KillAfterDelay(killTime));
+		if (gameObject.GetComponent<iTween> () != null) {
+	        iTween.StopByName(beeId);
+	        var currentPos = transform.position;
+	        iTween.MoveTo(gameObject,new Vector3(currentPos.x,-4f,currentPos.z), killTime);
+	        StartCoroutine(KillAfterDelay(killTime));
+		}
     }
 
     public IEnumerator KillAfterDelay(float killbefore)
     {
         yield return new WaitForSecondsRealtime(killbefore);
-		iTween.StopByName(beeId);
+		if (gameObject.GetComponent<iTween> () != null) {
+			iTween.StopByName (beeId);
+		}
         yield return new WaitForSecondsRealtime(2f);
         Destroy(gameObject);
     }
 
     public void KillMeClimax()
     {
-        iTween.StopByName(beeId);
+		if (gameObject.GetComponent<iTween>() != null) {
+			iTween.StopByName (beeId);
+		}
     }
 
     public void UpdatePath()
     {
+		if (gameObject.GetComponent<iTween>() != null) {
+	        iTween.StopByName(beeId);
 
-        iTween.StopByName(beeId);
+	        UpdatePathInPoints();
 
-        UpdatePathInPoints();
+	        param.Remove("path");
+	        param.Add("path", destinations);
 
-        param.Remove("path");
-        param.Add("path", destinations);
-
-        iTween.MoveTo(gameObject, param);
+	        iTween.MoveTo(gameObject, param);
+		}
 
     }
 

@@ -26,8 +26,7 @@ public class ContaminationWave : MonoBehaviour {
 
         currentId = "";
 
-        //ProtectedShields = dataEngine.ActivatedShield;
-        ProtectedShields = 0;
+        ProtectedShields = dataEngine.ActivatedShield;
 
         if (touched.GetComponent<WalkingBees>() != null)
         {

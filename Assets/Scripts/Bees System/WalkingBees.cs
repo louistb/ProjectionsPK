@@ -43,15 +43,9 @@ public class WalkingBees : MonoBehaviour {
 
         iTween.MoveTo(gameObject, param);
     }
-
-	public void update() {
-		t += Time.deltaTime;
-		if (t >= _TimeBeforeDeath) {
-			KillMe(3f);
-			t = 0;
-		}
-	}
+		
     public void UpdatePath() {
+		if (gameObject.GetComponent<iTween> () != null) {
 
         iTween.StopByName(beeId);
 
@@ -62,19 +56,25 @@ public class WalkingBees : MonoBehaviour {
 
         iTween.MoveTo(gameObject, param);
 
+	}
+
     }
     public void KillMe(float killTime)
     {
-        iTween.StopByName(beeId);
-        var currentPos = transform.position;
-		iTween.MoveTo(gameObject,new Vector3(currentPos.x,-4f,currentPos.z), killTime);
-        StartCoroutine(KillAfterDelay(killTime));
+		if (gameObject.GetComponent<iTween> () != null) {
+			iTween.StopByName (beeId);
+			var currentPos = transform.position;
+			iTween.MoveTo (gameObject, new Vector3 (currentPos.x, -4f, currentPos.z), killTime);
+			StartCoroutine (KillAfterDelay (killTime));
+		}
     }
 
     public IEnumerator KillAfterDelay(float killbefore)
     {
         yield return new WaitForSecondsRealtime(killbefore);
-		iTween.StopByName(beeId);
+		if (gameObject.GetComponent<iTween> () != null) {
+			iTween.StopByName (beeId);
+		}
         yield return new WaitForSecondsRealtime(2f);
         Destroy(gameObject);
     }
@@ -92,8 +92,10 @@ public class WalkingBees : MonoBehaviour {
 
     public void KillMeClimax()
     {
-        iTween.StopByName(beeId);
-        Destroy(gameObject);
+		if (gameObject.GetComponent<iTween> () != null) {
+			iTween.StopByName (beeId);
+			Destroy (gameObject);
+		}
     }
 
     public Vector3 RandomPointInBox(Vector3 center, Vector3 size)
