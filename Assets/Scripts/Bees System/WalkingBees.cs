@@ -14,9 +14,10 @@ public class WalkingBees : MonoBehaviour {
     public Vector3[] destinations;
     public int nbOfPointsinPath = 12;
 
-    public bool InAttraction, Flying,Dying;
+    public bool Alive;
 
     private Hashtable param = new Hashtable();
+	private Hashtable paramDrop = new Hashtable();
 
     public GameObject SelectedWall;
 
@@ -25,6 +26,7 @@ public class WalkingBees : MonoBehaviour {
         _TimeBeforeDeath = Controller.TimeBeforeDeathWalk - Controller.TimeBeforeDeath / UnityEngine.Random.Range(0, Controller.TimeBeforeDeath / 3);
         _speed = Controller.speedWalk;
         beeId = Guid.NewGuid().ToString();
+		Alive = true;
     }
 
     void Start()
@@ -61,22 +63,33 @@ public class WalkingBees : MonoBehaviour {
     }
     public void KillMe(float killTime)
     {
-		if (gameObject.GetComponent<iTween> () != null) {
-			iTween.StopByName (beeId);
-			var currentPos = transform.position;
-			iTween.MoveTo (gameObject, new Vector3 (currentPos.x, -4f, currentPos.z), killTime);
-			StartCoroutine (KillAfterDelay (killTime));
+		if (Alive == true) {
+			if (gameObject.GetComponent<iTween> () != null) {
+				iTween.StopByName(beeId);
+				var currentPos = transform.position;
+
+				paramDrop.Remove ("name");
+				paramDrop.Add("name", beeId);
+				paramDrop.Remove("position");
+				paramDrop.Add("position",new Vector3(currentPos.x,-4f,currentPos.z));
+				paramDrop.Remove("time");
+				paramDrop.Add("time",killTime - 2f);
+
+				iTween.MoveTo(gameObject,paramDrop);
+
+				StartCoroutine(KillAfterDelay(killTime));
+			}
 		}
+		Alive = false;
     }
 
     public IEnumerator KillAfterDelay(float killbefore)
     {
-        yield return new WaitForSecondsRealtime(killbefore);
-		if (gameObject.GetComponent<iTween> () != null) {
-			iTween.StopByName (beeId);
+		yield return new WaitForSecondsRealtime(killbefore +2f);
+		if (gameObject.GetComponent<iTween>() != null) {
+			iTween.StopByName(beeId);
 		}
-        yield return new WaitForSecondsRealtime(2f);
-        Destroy(gameObject);
+		Destroy(gameObject);
     }
 
     public void UpdatePathItems()
@@ -94,8 +107,8 @@ public class WalkingBees : MonoBehaviour {
     {
 		if (gameObject.GetComponent<iTween> () != null) {
 			iTween.StopByName (beeId);
-			Destroy (gameObject);
 		}
+		Destroy (gameObject);
     }
 
     public Vector3 RandomPointInBox(Vector3 center, Vector3 size)

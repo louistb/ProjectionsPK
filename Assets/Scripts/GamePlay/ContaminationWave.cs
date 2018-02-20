@@ -52,14 +52,14 @@ public class ContaminationWave : MonoBehaviour {
 
 	                         if (touched.gameObject.GetComponent<WalkingBees>() != null)
 	                            {
-	                                touched.GetComponent<WalkingBees>().KillMe(3f);
+	                                touched.GetComponent<WalkingBees>().KillMe(6f);
 	                                listTouched.Add(touched.GetComponent<WalkingBees>().beeId);
 	                            }
 
 
 	                        if (touched.gameObject.GetComponent<FlyingBees>() != null)
 	                            { 
-	                                touched.GetComponent<FlyingBees>().KillMe(3f);
+	                                touched.GetComponent<FlyingBees>().KillMe(6f);
 	                                listTouched.Add(touched.GetComponent<FlyingBees>().beeId);
 	                        	}
 

@@ -11,11 +11,12 @@ public class FlyingBees : MonoBehaviour
     public Renderer _FlyZone;
     public BeesController Controller;
     public float LifeTimer;
-    public bool InAttraction, Dying;
+	public bool Alive;
     public string beeId;
     private float time;
 
     private Hashtable param = new Hashtable();
+	private Hashtable paramDrop = new Hashtable();
 
     void Awake() {
         Controller = GameObject.Find("Bees_System").GetComponent<BeesController>();
@@ -24,6 +25,7 @@ public class FlyingBees : MonoBehaviour
         _FlyZone = Controller.FlyZone;
         beeId = Guid.NewGuid().ToString();
 		gameObject.name = beeId;
+		Alive = true;
     }
 
     void Start()
@@ -45,34 +47,46 @@ public class FlyingBees : MonoBehaviour
     }
     public void KillMe(float killTime)
     {
-		if (gameObject.GetComponent<iTween> () != null) {
-	        iTween.StopByName(beeId);
-	        var currentPos = transform.position;
-	        iTween.MoveTo(gameObject,new Vector3(currentPos.x,-4f,currentPos.z), killTime);
-	        StartCoroutine(KillAfterDelay(killTime));
+		if (Alive == true) {
+			if (gameObject.GetComponent<iTween>()!= null) {
+		        iTween.StopByName(beeId);
+		        var currentPos = transform.position;
+				paramDrop.Remove ("name");
+				paramDrop.Add("name", beeId);
+				paramDrop.Remove("position");
+				paramDrop.Add("position",new Vector3(currentPos.x,-4f,currentPos.z));
+				paramDrop.Remove("time");
+				paramDrop.Add("time",killTime - 2f);
+
+				iTween.MoveTo(gameObject,paramDrop);
+
+		        StartCoroutine(KillAfterDelay(killTime));
+			}
 		}
+		Alive = false;
     }
 
     public IEnumerator KillAfterDelay(float killbefore)
     {
-        yield return new WaitForSecondsRealtime(killbefore);
-		if (gameObject.GetComponent<iTween> () != null) {
-			iTween.StopByName (beeId);
+        yield return new WaitForSecondsRealtime(killbefore + 2f);
+		if (gameObject.GetComponent<iTween>() != null) {
+			iTween.StopByName(beeId);
 		}
-        yield return new WaitForSecondsRealtime(2f);
-        Destroy(gameObject);
+		Destroy(gameObject);
+        
     }
 
     public void KillMeClimax()
     {
-		if (gameObject.GetComponent<iTween>() != null) {
+		if (gameObject.GetComponent<iTween>()!= null) {
+			print ("fromclimax");
 			iTween.StopByName (beeId);
 		}
     }
 
     public void UpdatePath()
     {
-		if (gameObject.GetComponent<iTween>() != null) {
+		if (gameObject.GetComponent<iTween>()!= null) {
 	        iTween.StopByName(beeId);
 
 	        UpdatePathInPoints();
