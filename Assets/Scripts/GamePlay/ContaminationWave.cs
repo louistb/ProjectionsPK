@@ -49,17 +49,18 @@ public class ContaminationWave : MonoBehaviour {
 					
                     if (random100 <= revesedChance) {
 						if (touched.GetComponent<iTween>() != null) {
+							var randomKillTime = UnityEngine.Random.Range (3f, 8f);
 
 	                         if (touched.gameObject.GetComponent<WalkingBees>() != null)
 	                            {
-	                                touched.GetComponent<WalkingBees>().KillMe(6f);
+									touched.GetComponent<WalkingBees>().KillMe(randomKillTime);
 	                                listTouched.Add(touched.GetComponent<WalkingBees>().beeId);
 	                            }
 
 
 	                        if (touched.gameObject.GetComponent<FlyingBees>() != null)
 	                            { 
-	                                touched.GetComponent<FlyingBees>().KillMe(6f);
+									touched.GetComponent<FlyingBees>().KillMe(randomKillTime);
 	                                listTouched.Add(touched.GetComponent<FlyingBees>().beeId);
 	                        	}
 

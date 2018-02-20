@@ -45,6 +45,7 @@ public class BeesController : MonoBehaviour {
     private GameObject[] intheScene;
     private GameObject[] Walls;
     private GameObject[] SpawnPoints;
+	public bool IsClimaxRunning;
 
     private void Start()
     {
@@ -89,73 +90,76 @@ public class BeesController : MonoBehaviour {
 	}
 
 	public void CheckBees() {
+		if (!IsClimaxRunning) {
 
-		var allBees = GameObject.FindGameObjectsWithTag("bee"); 
+			var allBees = GameObject.FindGameObjectsWithTag("bee"); 
 
-		countWalk = 0;
-		countFly = 0;
+			countWalk = 0;
+			countFly = 0;
 
-		foreach (var bee in allBees) {
-			
-			if (bee.GetComponent<iTween>() != null) {
-				if (bee.GetComponent<WalkingBees> () != null)
-					countWalk ++;
-				if (bee.GetComponent<FlyingBees> () != null)
-					countFly ++;
+			foreach (var bee in allBees) {
+				
+				if (bee.GetComponent<iTween>() != null) {
+					if (bee.GetComponent<WalkingBees> () != null)
+						countWalk ++;
+					if (bee.GetComponent<FlyingBees> () != null)
+						countFly ++;
+				}
+
 			}
 
-		}
+			if (countFly > MaxFlying) {
 
-		if (countFly > MaxFlying) {
+				var toDelete = countFly - MaxFlying;
+				var looking = true;
+				var iterationInt = 0;
+				var foundInt = 0;
 
-			var toDelete = countFly - MaxFlying;
-			var looking = true;
-			var iterationInt = 0;
-			var foundInt = 0;
+				while (looking == true) {
+					iterationInt++;
+					if (allBees [iterationInt].GetComponent<FlyingBees> () != null) {
+						if (allBees [iterationInt].GetComponent<iTween> () != null) {
+							foundInt++;
+							var randomKillTime = UnityEngine.Random.Range (3f, 8f);
+							allBees [iterationInt].GetComponent<FlyingBees> ().KillMe (randomKillTime);
+						}
+					}
+					if (foundInt > toDelete) {
+						looking = false;
+						break;
 
-			while (looking == true) {
-				iterationInt++;
-				if (allBees [iterationInt].GetComponent<FlyingBees> () != null) {
-					if (allBees [iterationInt].GetComponent<iTween> () != null) {
-						foundInt++;
-						allBees [iterationInt].GetComponent<FlyingBees> ().KillMe (6f);
 					}
 				}
-				if (foundInt > toDelete) {
-					looking = false;
-					break;
 
-				}
+
 			}
 
+			if (countWalk > MaxWakling) {
 
-		}
+				var toDelete = countWalk - MaxWakling;
+				var looking = true;
+				var iterationInt = 0;
+				var foundInt = 0;
 
-		if (countWalk > MaxWakling) {
+				while (looking == true) {
+					iterationInt++;
+					if (allBees [iterationInt].GetComponent<WalkingBees> () != null) {
+						if (allBees [iterationInt].GetComponent<iTween> () != null) {
+							foundInt++;
+							var randomKillTime = UnityEngine.Random.Range (3f, 8f);
+							allBees [iterationInt].GetComponent<WalkingBees> ().KillMe (randomKillTime);
+						}
+					}
+					if (foundInt > toDelete) {
+						looking = false;
+						break;
 
-			var toDelete = countWalk - MaxWakling;
-			var looking = true;
-			var iterationInt = 0;
-			var foundInt = 0;
-
-			while (looking == true) {
-				iterationInt++;
-				if (allBees [iterationInt].GetComponent<WalkingBees> () != null) {
-					if (allBees [iterationInt].GetComponent<iTween> () != null) {
-						foundInt++;
-						allBees [iterationInt].GetComponent<WalkingBees> ().KillMe (6f);
 					}
 				}
-				if (foundInt > toDelete) {
-					looking = false;
-					break;
 
-				}
+
 			}
-
-
-		}
-			
+		}	
 
 	}
 
@@ -194,41 +198,42 @@ public class BeesController : MonoBehaviour {
 
     public void burst(string type)
     {
+		if (!IsClimaxRunning) {
+	        var arraySelected = 0;
+	        var selectedObj = new Object();
 
-        var arraySelected = 0;
-        var selectedObj = new Object();
+	        if (type == "Walking") {
+	            arraySelected = NbOfBeesBurstWalk;
+	            selectedObj = WalkingBees;
+	        }
 
-        if (type == "Walking") {
-            arraySelected = NbOfBeesBurstWalk;
-            selectedObj = WalkingBees;
-        }
+			if (type == "FlyingBlue") {
+	            arraySelected = NbOfBeesBurstFly;
+	            selectedObj = FlyingBlue;
+	        }
 
-		if (type == "FlyingBlue") {
-            arraySelected = NbOfBeesBurstFly;
-            selectedObj = FlyingBlue;
-        }
+	        if (type == "Flying") {
+	            arraySelected = NbOfBeesBurstFly;
+	            selectedObj = WalkingBees;
+	        }
 
-        if (type == "Flying") {
-            arraySelected = NbOfBeesBurstFly;
-            selectedObj = WalkingBees;
-        }
+	        for (var i = 1; i <= arraySelected; i++)
+	        {
+	            var newRotation = Quaternion.Euler(-90f, 0f, 0f);
+	            var Spawn = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
 
-        for (var i = 1; i <= arraySelected; i++)
-        {
-            var newRotation = Quaternion.Euler(-90f, 0f, 0f);
-            var Spawn = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
+	            GameObject NewBee = Instantiate(selectedObj, Spawn.transform.position, newRotation, transform) as GameObject;
 
-            GameObject NewBee = Instantiate(selectedObj, Spawn.transform.position, newRotation, transform) as GameObject;
+	            if (type == "Walking")
+	            {
+	                var selectedWall = Walls[Random.Range(0, Walls.Length)];
+	                NewBee.GetComponentInChildren<WalkingBees>().SelectedWall = selectedWall;
+	            }
 
-            if (type == "Walking")
-            {
-                var selectedWall = Walls[Random.Range(0, Walls.Length)];
-                NewBee.GetComponentInChildren<WalkingBees>().SelectedWall = selectedWall;
-            }
-
-            NewBee.tag = "bee";
-            
-        }
+	            NewBee.tag = "bee";
+	            
+	        }
+		}
     }
 
 }

@@ -12,6 +12,7 @@ public class DataPropolisEngine : MonoBehaviour {
 	public ContaminationWave WaveController;
 	public ClimaxController ClimaxController;
 	public ReservoirController Reservoir;
+	public bool IsClimaxRunning;
 
 	private bool oneTimeWave,oneTimeClimax;
 
@@ -58,18 +59,20 @@ public class DataPropolisEngine : MonoBehaviour {
 
     void OnReceiveWave(OscMessage message)
     {
-		lastWave = 0;
+		if (!IsClimaxRunning) {
+			lastWave = 0;
 
-        float state = message.GetFloat(0);
+			float state = message.GetFloat (0);
 
-		if (state == 1 && !oneTimeWave) {
-			oneTimeWave = true;
-			print ("Wave");
-			WaveController.StartWave();
-		}
+			if (state == 1 && !oneTimeWave) {
+				oneTimeWave = true;
+				print ("Wave Started");
+				WaveController.StartWave ();
+			}
 
-		if (state == 0) {
-			oneTimeWave = false;
+			if (state == 0) {
+				oneTimeWave = false;
+			}
 		}
     }
 
@@ -80,6 +83,7 @@ public class DataPropolisEngine : MonoBehaviour {
 
 		if (state == 1 && !oneTimeClimax) {
 			oneTimeClimax = true;
+			print ("Climax Started");
 			WaveController.KillWave();
 			ClimaxController.StartClimax();
 		}

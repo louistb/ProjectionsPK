@@ -45,6 +45,6 @@ public class UiController : MonoBehaviour {
 			}
         }
 
-		SceneManager.LoadSceneAsync("Main");
+		SceneManager.LoadScene("Main");
 	}
 }

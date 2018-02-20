@@ -79,7 +79,6 @@ public class FlyingBees : MonoBehaviour
     public void KillMeClimax()
     {
 		if (gameObject.GetComponent<iTween>()!= null) {
-			print ("fromclimax");
 			iTween.StopByName (beeId);
 		}
     }
