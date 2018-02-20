@@ -118,7 +118,7 @@ public class BeesController : MonoBehaviour {
 				if (allBees [iterationInt].GetComponent<FlyingBees> () != null) {
 					if (allBees [iterationInt].GetComponent<iTween> () != null) {
 						foundInt++;
-						allBees [iterationInt].GetComponent<FlyingBees> ().KillMe (4f);
+						allBees [iterationInt].GetComponent<FlyingBees> ().KillMe (6f);
 					}
 				}
 				if (foundInt > toDelete) {
@@ -143,7 +143,7 @@ public class BeesController : MonoBehaviour {
 				if (allBees [iterationInt].GetComponent<WalkingBees> () != null) {
 					if (allBees [iterationInt].GetComponent<iTween> () != null) {
 						foundInt++;
-						allBees [iterationInt].GetComponent<WalkingBees> ().KillMe (4f);
+						allBees [iterationInt].GetComponent<WalkingBees> ().KillMe (6f);
 					}
 				}
 				if (foundInt > toDelete) {

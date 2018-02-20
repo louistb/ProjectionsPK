@@ -41,6 +41,7 @@ public class WalkingBees : MonoBehaviour {
         param.Add("path", destinations);
         param.Add("speed", _speed);
         param.Add("orienttopath", true);
+		param.Add("axis", "yz");
         param.Add("easetype", iTween.EaseType.linear);
 
         iTween.MoveTo(gameObject, param);
