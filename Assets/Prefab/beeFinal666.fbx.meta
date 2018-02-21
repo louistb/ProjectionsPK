@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: c5886268a59cec84c9ab16ca3a32235f
-timeCreated: 1516898267
+guid: 1fc70b37bf4d18c4299b592329dfbd46
+timeCreated: 1519170991
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: AilesMarcheuse
-    100004: BEE
+    100000: AilesMarcheuse
+    100002: BEE
+    100004: //RootNode
     100006: PattesMarcheuse
-    400000: //RootNode
-    400002: AilesMarcheuse
-    400004: BEE
+    400000: AilesMarcheuse
+    400002: BEE
+    400004: //RootNode
     400006: PattesMarcheuse
     2100000: Material_001
     2100002: Material_002
@@ -27,22 +27,7 @@ ModelImporter:
     4300004: PattesMarcheuse
     7400000: Default Take
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 8d0550eb3dd20a845a37bf0fa1e6d8c6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_001
-    second: {fileID: 2100000, guid: 962efe9e72a01444bb0c70e73de66963, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_002
-    second: {fileID: 2100000, guid: 934a3d77e929aea44b40524dadcab8c9, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,7 +36,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
@@ -62,9 +47,9 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     animationCompression: 1
-    animationRotationError: 0
-    animationPositionError: 0
-    animationScaleError: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
@@ -72,7 +57,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Default Take
       takeName: Default Take
-      firstFrame: 0
+      firstFrame: -1
       lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
