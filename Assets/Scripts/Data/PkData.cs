@@ -20,21 +20,21 @@ public class PkData : MonoBehaviour {
 	public IEnumerator GetDataFromWebpage ()
 	{
 		while (true) {
-			
-			var dateTime = new DateTime(2015, 05, 24, 10, 2, 0, DateTimeKind.Local);
-			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-			var unixDateTime = (dateTime.ToUniversalTime() - epoch).TotalSeconds;
-			WWW webpage = new WWW(MeteoUrl + "?" + unixDateTime.ToString ());
-			while (!webpage.isDone) yield return false;
-			string content = webpage.text;
-			Char splitChar = Convert.ToChar(" ");
-			dataArray = content.Split(splitChar);
-			//print (content);
-			SplitToValue (dataArray);
-            wind.UpdateWind(DirectionWind, SpeedWind, MaxWindSpeed);
-            yield return new WaitForSecondsRealtime (10);
-		}
+			var dateTime = new DateTime (2015, 05, 24, 10, 2, 0, DateTimeKind.Local);
+			var epoch = new DateTime (1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+			var unixDateTime = (dateTime.ToUniversalTime () - epoch).TotalSeconds;
+			WWW webpage = new WWW (MeteoUrl + "?" + unixDateTime.ToString ());
 
+			while (!webpage.isDone)
+				yield return false;
+			
+			string content = webpage.text;
+			Char splitChar = Convert.ToChar (" ");
+			dataArray = content.Split (splitChar);
+			SplitToValue (dataArray);
+			wind.UpdateWind (DirectionWind, SpeedWind, MaxWindSpeed);
+			yield return new WaitForSecondsRealtime (10);
+		}
 
 	}
 		
@@ -46,7 +46,7 @@ public class PkData : MonoBehaviour {
             CurrentTemperature = float.Parse(DataArray[2]);
             CurrentHumidity = float.Parse(DataArray[3]);
         }
-        catch (Exception)
+        catch
         {
             
         }

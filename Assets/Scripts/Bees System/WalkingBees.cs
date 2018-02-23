@@ -115,9 +115,9 @@ public class WalkingBees : MonoBehaviour {
     public Vector3 RandomPointInBox(Vector3 center, Vector3 size)
     {
         return center + new Vector3(
-           ((UnityEngine.Random.value - 0.5f) * size.x / 3),
-           (UnityEngine.Random.value - 0.5f) * size.y / 3,
-           (UnityEngine.Random.value - 0.5f) * size.z / 3
+           ((UnityEngine.Random.value - 0.5f) * size.x / 1.5f),
+           (UnityEngine.Random.value - 0.5f) * size.y / 1.5f,
+           (UnityEngine.Random.value - 0.5f) * size.z / 1.5f
         );
     }
 
